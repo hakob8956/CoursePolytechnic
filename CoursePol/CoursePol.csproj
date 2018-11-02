@@ -7,11 +7,28 @@
   <ItemGroup>
     <Compile Remove="Migrations\20181022164528_Initial.cs" />
     <Compile Remove="Migrations\20181022164528_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20181022195805_Initial.cs" />
+    <Compile Remove="Migrations\20181022195805_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20181025192211_Initial.cs" />
+    <Compile Remove="Migrations\20181025192211_Initial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\ViewModels\" />
-    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\pascalFile\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Account\Login.cshtml" />
+    <None Include="Views\Account\Register.cshtml" />
+    <None Include="wwwroot\lib\vendors\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\vendors\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\vendors\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\lib\vendors\jquery\jquery.js" />
+    <None Include="wwwroot\lib\vendors\jquery\jquery.min.js" />
+    <None Include="wwwroot\lib\vendors\jquery\jquery.min.map" />
+    <None Include="wwwroot\lib\vendors\jquery\jquery.slim.js" />
+    <None Include="wwwroot\lib\vendors\jquery\jquery.slim.min.js" />
+    <None Include="wwwroot\lib\vendors\jquery\jquery.slim.min.map" />
   </ItemGroup>
 
   <ItemGroup>

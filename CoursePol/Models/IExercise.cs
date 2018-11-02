@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CoursePol.Models
 {
-    interface IExercise
+    public interface IExercise
     {
         IEnumerable<Exercise> Exercises { get; }
         void SaveExercise(Exercise exercise);

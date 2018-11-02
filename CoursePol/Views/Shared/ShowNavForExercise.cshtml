@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Exercise>
+@{
+    string id = String.Empty;
+}
+<ul class="nav flex-column " style="position:fixed" id="hor_menu">
+    @*@foreach (var item in Model)
+        {
+            <li class="nav-item">
+                @{  id= $"navClick{item.ID}";}
+                <a class="nav-link" asp-action="Exercise" asp-controller="Course" asp-route-exerciseID="@item.ID" id=@id>@item.Title</a>
+            </li>
+
+        }*@
+   
+</ul>
+
+
+
+

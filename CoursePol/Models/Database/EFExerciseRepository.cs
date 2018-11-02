@@ -44,9 +44,10 @@ namespace CoursePol.Models
                 if (dbEntry != null)
                 {
                     dbEntry.Text = exercise.Text;
+                    dbEntry.CourseID = exercise.CourseID;
                     dbEntry.Title = exercise.Title;
                     dbEntry.Points = exercise.Points;
-                   
+                    dbEntry.CourseID = exercise.CourseID;
                 }
             }
             context.SaveChanges();

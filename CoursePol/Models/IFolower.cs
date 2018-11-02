@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CoursePol.Models
 {
-    interface IFolower
+    public interface IFolower
     {
         IEnumerable<Folower> Folowers { get; }
         void SaveFolower(Folower folower);

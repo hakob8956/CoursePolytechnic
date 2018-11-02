@@ -11,7 +11,7 @@ using System;
 namespace CoursePol.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181022195805_Initial")]
+    [Migration("20181028212621_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -79,6 +79,8 @@ namespace CoursePol.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CourseID");
 
                     b.Property<int>("Points");
 

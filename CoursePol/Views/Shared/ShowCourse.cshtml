@@ -1,4 +1,5 @@
-﻿<section class="course_details_area p_120">
+﻿@model Course
+<section class="course_details_area p_120">
     <div class="container">
         <div class="row course_details_inner">
             <div class="col-lg-8">
@@ -48,6 +49,9 @@
                         </div>
                     </div>
                     <div class="tab-pane fade show active" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+                        <div id="disqus_thread"></div>
+
+                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
                     </div>
                 </div>
@@ -56,13 +60,36 @@
                 <div class="c_details_list">
                     <ul class="list" id="myList">
                         <li><a href="#">Trainer’s Name <span>Պր․Ղուկասյան </span></a></li>
-                        <li><a href="#">Course Fee <span>$230</span></a></li>
-                        <li><a href="#">Available Seats <span>15</span></a></li>
-                        <li><a href="#">Schedule <span>2.00 pm to 4.00 pm</span></a></li>
+                        <li>@*<a href="#">Course Fee <span>$230</span></a>*@</li>
+                        <li><a href="#">Seats <span>15</span></a></li>
+                        <li>@*<a href="#">Schedule <span>2.00 pm to 4.00 pm</span></a>*@</li>
                     </ul>
-                    <a class="main_btn" asp-action="Course" asp-controller="Course">Enroll the Course</a> 
+                    <form asp-action="AddFolower" asp-controller="Course" method="post">
+                        <input type="hidden" value="@Model.CourseID"  name="courseID"/>
+                        <button class="main_btn"  type="submit" style="width:100%">Enroll the Course</button>
+
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function () { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://coursepol.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>

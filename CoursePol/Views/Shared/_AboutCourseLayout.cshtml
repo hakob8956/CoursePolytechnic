@@ -18,7 +18,7 @@
     <!-- main css -->
     <link rel="stylesheet" asp-href-include="~/lib/css/style.css">
     <link rel="stylesheet" asp-href-include="~/lib/css/responsive.css">
-
+    @RenderSection("Style", false)
 </head>
 <body>
 
@@ -80,9 +80,9 @@
                 <div class="banner_content text-center">
                     <h2>Course Details</h2>
                     <div class="page_link">
-                        <a href="index.html">Home</a>
-                        <a href="courses.html">Course</a>
-                        <a href="course-details.html">Course Details</a>
+                        <a asp-controller="Home" asp-action="Index">Home</a>
+                        <a asp-controller="Course" asp-action="Index">Course</a>
+                        <a href="#">Course Details</a>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,9 @@
     <script asp-src-include="~/lib/vendors/counter-up/jquery.counterup.js"></script>
     <script asp-src-include="~/lib/js/mail-script.js"></script>
     <script asp-src-include="~/lib/js/theme.js"></script>
+    <script asp-src-include="~/lib/jquery/dist/*.min.js"></script>
 
+    @RenderSection("scripts", false)
 
 </body>
 </html>

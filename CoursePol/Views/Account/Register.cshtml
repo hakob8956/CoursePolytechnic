@@ -1,0 +1,34 @@
+﻿@model RegisterModel
+
+<div class="container text-center">
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" value="@DateTime.Now" name="Date" />
+        <div class="form-group">
+            <label asp-for="Email"></label><br />
+            <input asp-for="Email" class="form-control form-group" style="width:45%;display:inline" />
+            <div><span asp-validation-for="Email" class="text-danger"></span></div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Year"></label><br />
+            <input asp-for="Year" class="form-control form-group" style="width:45%;display:inline" />
+            <div><span asp-validation-for="Year" class="text-danger"></span></div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password"></label><br />
+            <input asp-for="Password" class="form-control form-group" style="width:45%;display:inline" />
+            <div><span asp-validation-for="Password" class="text-danger"></span></div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PasswordConfirm"></label><br />
+            <input asp-for="PasswordConfirm" class="form-control form-group" style="width:45%;display:inline" />
+            <div><span asp-validation-for="PasswordConfirm" class="text-danger"></span></div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    }
+
+</div>

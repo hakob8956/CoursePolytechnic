@@ -97,6 +97,7 @@ namespace CoursePol.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CourseID = table.Column<int>(nullable: false),
                     Points = table.Column<int>(nullable: false),
                     Text = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true)

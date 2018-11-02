@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Course>
 <!--================Finance Area =================-->
 <section class="finance_area">
     <div class="container">
@@ -18,35 +18,11 @@
         <div class="row courses_inner">
             <div class="col-lg-9">
                 <div class="grid_inner">
-                    <div class="grid_item wd55">
-                        <div class="courses_item">
-                            <img src="/lib/img/courses/course-1.jpg" alt="">
-                            <div class="hover_text">
-
-                                <a asp-action="Index" asp-controller="Course" asp-route-courseID="1"><h4>Ինորմատիկայի հիմունքներ</h4></a>
-                                <ul class="list">
-                                    <li><a href="#"><i class="lnr lnr-users"></i>0</a></li>
-                                    <li><a href="#"><i class="lnr lnr-bubble"></i>0</a></li>
-                                    <li><a href="#"><i class="lnr lnr-user"></i>Պ․Ղուկասյան</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid_item wd44">
-                        <div class="courses_item">
-                            <img src="/lib/img/courses/course-4.jpg" alt="">
-                            <div class="hover_text">
-
-                                <a href="#"><h4>Lorem ipsum</h4></a>
-                                <ul class="list">
-                                    <li><a href="#"><i class="lnr lnr-users"></i>0</a></li>
-                                    <li><a href="#"><i class="lnr lnr-bubble"></i>0</a></li>
-                                    <li><a href="#"><i class="lnr lnr-user"></i> Պ․Ղուկասյան</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    @foreach (var item in Model)
+                    {
+                        @Html.Partial("ShowCardCourse", item)
+                    }
+                    
 
                 </div>
             </div>

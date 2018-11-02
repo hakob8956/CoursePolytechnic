@@ -46,7 +46,6 @@ namespace CoursePol.Models
                 if (dbEntry != null)
                 {
                     dbEntry.ExercisesID = courseExercise.ExercisesID;
-                    dbEntry.CourseID = courseExercise.CourseID;
                     dbEntry.UserID = courseExercise.UserID;
                     dbEntry.Completed = courseExercise.Completed;
                 }

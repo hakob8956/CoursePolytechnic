@@ -79,6 +79,8 @@ namespace CoursePol.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("CourseID");
+
                     b.Property<int>("Points");
 
                     b.Property<string>("Text");

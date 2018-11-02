@@ -1,53 +1,52 @@
 ﻿@{
     Layout = "_CourseLayout";
 }
-
+@model IEnumerable<Exercise>
 <div class="container">
     <div class="row">
         <div class="col-lg-2">
-            <ul class="nav flex-column " style="position:fixed" id="hor_menu">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
+
+            <ul class="nav flex-column" style="position:fixed" id="hor_menu">
+                @foreach (var item in Model)
+                {
+                    <li class="nav-item">
+
+                        <a class="nav-link myExercise" href="#" id=@item.ID>@item.Title</a>
+                    </li>
+
+                    
+                }
 
             </ul>
+
         </div>
-        <div class="col-lg">
-            <div>
-                <h2 align="center">Example Lorem Ipsum</h2>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et finibus augue. Pellentesque imperdiet nisi in orci fringilla faucibus. Vestibulum leo erat, venenatis nec scelerisque vitae, cursus et nisl. Aenean nec eros sed tellus auctor molestie. Pellentesque fermentum, nisl vel accumsan porttitor, turpis enim eleifend lorem, id condimentum nunc nisl sed sem. Vestibulum pellentesque lorem dolor, et varius diam rhoncus quis. Integer nisl sapien, lobortis at facilisis eleifend, consequat a sem. Sed non nisi sed magna feugiat dictum. Mauris nec dapibus lectus. Aenean vel efficitur diam. Etiam mi justo, scelerisque ac leo quis, faucibus suscipit neque.
+        <div class="col-lg" id="content">
+            <h3 align="center">Lorem Ipsum</h3>
+            "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
 
-                Nulla ligula mi, consectetur a venenatis ac, molestie sed magna. Nunc molestie luctus porttitor. Mauris porttitor faucibus sagittis. Donec vehicula, lectus at commodo eleifend, dui metus varius ipsum, vehicula iaculis nisi dolor et sapien. Etiam dui urna, consequat a tincidunt sed, blandit a quam. Vivamus ut tincidunt lorem, ac fermentum tellus. Phasellus eget tortor mattis, iaculis turpis non, cursus libero. Vivamus feugiat vel arcu viverra laoreet.
-            </div>
-            <div style="margin-top:80px;margin-bottom:150px">
-                <form method="post">
-                    <div class="form-group">
-                        <label class="form-check-label">My Text Area</label>
-                        <textarea class="form-control" placeholder="There youre code..."></textarea>
-                    </div>
+            "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nisl lobortis, hendrerit ex non, tristique felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent eget augue placerat, sagittis arcu vitae, elementum augue. Pellentesque ac tristique velit. Phasellus eleifend quam erat, eget blandit tellus placerat ut. Etiam pharetra tincidunt metus, at porttitor urna pretium dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla pretium dolor in elit accumsan, ac cursus nulla ultricies. Pellentesque consectetur sollicitudin neque, a fermentum lacus pellentesque vitae. Integer sollicitudin vitae nunc id porta. Proin nulla neque, porttitor vel ante id, blandit sodales nulla. Suspendisse a diam sed nibh viverra lacinia egestas ac ligula. Duis risus est, dapibus eget posuere eget, volutpat in felis.
 
-                    <input type="submit" class="genric-btn success-border circle arrow float-right" value="Submit" />
-                </form>
-            </div>
+            Nullam vitae elit massa. Phasellus a cursus dolor, eget luctus tellus. Ut scelerisque ipsum ut augue consectetur, at vehicula sapien elementum. Nunc sed pellentesque odio. Sed eu erat tortor. Fusce faucibus turpis a mi maximus, id viverra sapien semper. Phasellus venenatis varius augue a scelerisque. Fusce nec lacus vel tortor vestibulum porta. Duis fermentum tincidunt laoreet. Cras facilisis turpis ut enim efficitur, eu fringilla dui malesuada.
+
+            Mauris et massa eu justo imperdiet malesuada eu vitae felis. Praesent volutpat suscipit cursus. Cras rutrum leo nec mi aliquam elementum. Fusce posuere faucibus elit, eu faucibus libero tincidunt at. Aliquam aliquam finibus sem. Duis fringilla orci ut convallis laoreet. In lacinia elit nisl, in ultrices arcu molestie vel. Fusce efficitur lorem vitae mattis scelerisque.
         </div>
 
 
     </div>
 
 </div>
-<style>
-    .nav-link {
-        color: #3E3E3E;
-    }
-
-        .nav-link:hover {
-            color: #121212;
+@section Style{
+    <style>
+        .nav-link {
+            color: #3E3E3E;
         }
-</style>
+
+            .nav-link:hover {
+                color: #121212;
+            }
+    </style>
+
+}
+
