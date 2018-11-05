@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SmartBreadcrumbs;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Reflection;
+
+
+
 
 namespace CoursePol
 {
@@ -50,7 +52,15 @@ namespace CoursePol
             services.AddTransient<IUserExercisesComplete, EFUserExercisesComplete>();
             //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
+            services.UseBreadcrumbs(GetType().Assembly, options =>
+            {
+                options.TagName = "div";
+                options.TagClasses = "myBreadcrumb";
+                options.OlClasses = "breadcrumb";
+                options.LiClasses = "breadcrumb-item";
+                options.ActiveLiClasses = "breadcrumb-item active";
+                options.SeparatorElement = "";
+            });
             services.AddMvc();
         }
 

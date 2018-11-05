@@ -21,57 +21,58 @@ namespace CoursePol.Controllers
             _signInManager = signInManager;
            
         }
-        [HttpGet]
+        
+        //[HttpGet]
 
-        public IActionResult Register()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                return NotFound();
-            }
+        //public IActionResult Register()
+        //{
+        //    if (User.Identity.IsAuthenticated)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterModel model)
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                return NotFound();
-            }
+        //    return View();
+        //}
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Register(RegisterModel model)
+        //{
+        //    if (User.Identity.IsAuthenticated)
+        //    {
+        //        return NotFound();
+        //    }
 
-            if (ModelState.IsValid)
-            {
-                User user = new User { Email = model.Email, UserName = model.Email, Year = model.Year, Date = model.Date };
-                // добавляем пользователя
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                   // var resultRole = await _userManager.AddToRoleAsync(user, "user");
-                    //if (resultRole.Succeeded)
-                    //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        User user = new User { Email = model.Email, UserName = model.Email, Year = model.Year, Date = model.Date };
+        //        // добавляем пользователя
+        //        var result = await _userManager.CreateAsync(user, model.Password);
+        //        if (result.Succeeded)
+        //        {
+        //           // var resultRole = await _userManager.AddToRoleAsync(user, "user");
+        //            //if (resultRole.Succeeded)
+        //            //{
                        
                         
-                        //установка куки
-                        await _signInManager.SignInAsync(user, false);
+        //                //установка куки
+        //                await _signInManager.SignInAsync(user, false);
 
                       
 
-                        return RedirectToAction("Index", "Home");
-                    //}
+        //                return RedirectToAction("Index", "Home");
+        //            //}
 
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
-                }
-            }
-            return View(model);
-        }
+        //        }
+        //        else
+        //        {
+        //            foreach (var error in result.Errors)
+        //            {
+        //                ModelState.AddModelError(string.Empty, error.Description);
+        //            }
+        //        }
+        //    }
+        //    return View(model);
+        //}//REGISTER
 
         [HttpGet]
         public IActionResult Login(string returnUrl = null)

@@ -1,9 +1,10 @@
 ﻿using CoursePol.Models;
 using CoursePol.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SmartBreadcrumbs;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,16 +27,19 @@ namespace CoursePol.Controllers
             _course = course;
             _folower = folower;
         }
-
+        [Breadcrumb("ViewData.Title", CacheTitle = true, FromAction = "Home.Index")]
         public IActionResult Index()
         {
+            ViewData["Title"] = "Courses";
             var Courses = _course.Courses.ToList();
             return View(Courses);
 
 
         }
+        [Breadcrumb("ViewData.Title", CacheTitle = true, FromAction = "Course.Index")]
         public IActionResult CourseDetails(int? courseID)
         {
+            ViewData["Title"] = "AboutCourse";
             if (courseID == null)
             {
                 return NotFound();
@@ -49,21 +53,31 @@ namespace CoursePol.Controllers
             return NotFound();
 
         }
+        [Breadcrumb("ViewData.Title", CacheTitle = true, FromAction = "Course.CourseDetails")]
+        [Authorize]
         public IActionResult Course(int? courseID)
         {
+
             if (courseID == null)
             {
                 return NotFound();
             }
-            var CourseExercise = _exercise.Exercises.Where(c => c.CourseID == courseID);
-
-            if (CourseExercise.Count() != 0)
+            var Course = _course.Courses.FirstOrDefault(c => c.CourseID == courseID);//for ViewData
+            if (Course != null)
             {
-                return View(CourseExercise);
+                var CourseExercise = _exercise.Exercises.Where(c => c.CourseID == Course.CourseID);
+                if (CourseExercise.Count() != 0)
+                {
+                    ViewData["Title"] = Course.Title;
+                    return View(CourseExercise);
+                }
             }
             return NotFound();
 
         }
+
+        [Breadcrumb("ViewData.Title", CacheTitle = true, FromAction = "Course.Course")]
+        [Authorize]
         public async Task<IActionResult> Exercise(string _exerciseID = null)
         {
             int exerciseID;
@@ -81,15 +95,14 @@ namespace CoursePol.Controllers
                 var user = await GetCurrentUserAsync();
 
                 Exercise exercise = _exercise.Exercises.FirstOrDefault(e => e.ID == exerciseID);
-                if (exercise != null)
+                if (exercise != null && user != null)
                 {
                     ExerciseViewModel model = new ExerciseViewModel()
                     {
-                        ExerciseID = exercise.ID,
-                        Text = exercise.Text,
-                        CourseID = exercise.CourseID,
+                        Exercise = exercise,
                         UserID = user.Id
                     };
+                    ViewData["Title"] = model.Exercise.Title;
                     return View(model);
                 }
 
@@ -133,12 +146,12 @@ namespace CoursePol.Controllers
                 {
                     Directory.CreateDirectory($"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User{model.UserID}");
                 }
-                string path = $"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User{model.UserID}/exercise{model.ExerciseID}.txt";
+                string path = $"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User{model.UserID}/exercise{model.Exercise.ID}.txt";
                 FileInfo fi1 = new FileInfo(path);
 
                 using (StreamWriter sw = new StreamWriter(path, false, System.Text.Encoding.Default))
                 {
-                    sw.WriteLine(model.Text);
+                    sw.WriteLine(model.Exercise.Text);
                 }
 
             }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CoursePol.Models.ViewModels;
 using CoursePol.Models;
+using SmartBreadcrumbs;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CoursePol.Controllers
@@ -13,19 +14,18 @@ namespace CoursePol.Controllers
     {
         private ICourse _course;
 
+        
         public HomeController(ICourse course)
         {
             _course = course;           
         }
 
-        // GET: /<controller>/
+        [DefaultBreadcrumb("Home")]
         public IActionResult Index()
         {
             return View(_course.Courses);
         }
-        public IActionResult Course()
-        {
-            return View();
-        }
+        
+      
     }
 }

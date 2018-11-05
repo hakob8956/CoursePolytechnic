@@ -1,36 +1,55 @@
 ﻿@{
     Layout = "_CourseLayout";
+
 }
 @model IEnumerable<Exercise>
 <div class="container">
     <div class="row">
-        <div class="col-lg-2">
+        <div class="col-sm-2 bd-sidebar">
 
             <ul class="nav flex-column" style="position:fixed" id="hor_menu">
-                @foreach (var item in Model)
+                @*@foreach (var item in Model)
+                    {
+                        <li class="nav-item">
+
+                            <a class="nav-link myExercise" href="#" id=@item.ID>@item.Title</a>
+                        </li>
+
+
+                    }*@
+                @for (int i = 0; i < 90; i++)
                 {
                     <li class="nav-item">
 
-                        <a class="nav-link myExercise" href="#" id=@item.ID>@item.Title</a>
+                        <a class="nav-link myExercise" href="#">item @i</a>
                     </li>
-
-                    
                 }
 
             </ul>
 
         </div>
-        <div class="col-lg" id="content">
+        <div class="col-lg-10" id="content">
             <h3 align="center">Lorem Ipsum</h3>
-            "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+            <p class="text-justify">
+                "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
 
-            "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
+                "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nisl lobortis, hendrerit ex non, tristique felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent eget augue placerat, sagittis arcu vitae, elementum augue. Pellentesque ac tristique velit. Phasellus eleifend quam erat, eget blandit tellus placerat ut. Etiam pharetra tincidunt metus, at porttitor urna pretium dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla pretium dolor in elit accumsan, ac cursus nulla ultricies. Pellentesque consectetur sollicitudin neque, a fermentum lacus pellentesque vitae. Integer sollicitudin vitae nunc id porta. Proin nulla neque, porttitor vel ante id, blandit sodales nulla. Suspendisse a diam sed nibh viverra lacinia egestas ac ligula. Duis risus est, dapibus eget posuere eget, volutpat in felis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nisl lobortis, hendrerit ex non, tristique felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent eget augue placerat, sagittis arcu vitae, elementum augue. Pellentesque ac tristique velit. Phasellus eleifend quam erat, eget blandit tellus placerat ut. Etiam pharetra tincidunt metus, at porttitor urna pretium dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla pretium dolor in elit accumsan, ac cursus nulla ultricies. Pellentesque consectetur sollicitudin neque, a fermentum lacus pellentesque vitae. Integer sollicitudin vitae nunc id porta. Proin nulla neque, porttitor vel ante id, blandit sodales nulla. Suspendisse a diam sed nibh viverra lacinia egestas ac ligula. Duis risus est, dapibus eget posuere eget, volutpat in felis.
 
-            Nullam vitae elit massa. Phasellus a cursus dolor, eget luctus tellus. Ut scelerisque ipsum ut augue consectetur, at vehicula sapien elementum. Nunc sed pellentesque odio. Sed eu erat tortor. Fusce faucibus turpis a mi maximus, id viverra sapien semper. Phasellus venenatis varius augue a scelerisque. Fusce nec lacus vel tortor vestibulum porta. Duis fermentum tincidunt laoreet. Cras facilisis turpis ut enim efficitur, eu fringilla dui malesuada.
+                Nullam vitae elit massa. Phasellus a cursus dolor, eget luctus tellus. Ut scelerisque ipsum ut augue consectetur, at vehicula sapien elementum. Nunc sed pellentesque odio. Sed eu erat tortor. Fusce faucibus turpis a mi maximus, id viverra sapien semper. Phasellus venenatis varius augue a scelerisque. Fusce nec lacus vel tortor vestibulum porta. Duis fermentum tincidunt laoreet. Cras facilisis turpis ut enim efficitur, eu fringilla dui malesuada.
 
-            Mauris et massa eu justo imperdiet malesuada eu vitae felis. Praesent volutpat suscipit cursus. Cras rutrum leo nec mi aliquam elementum. Fusce posuere faucibus elit, eu faucibus libero tincidunt at. Aliquam aliquam finibus sem. Duis fringilla orci ut convallis laoreet. In lacinia elit nisl, in ultrices arcu molestie vel. Fusce efficitur lorem vitae mattis scelerisque.
+                Mauris et massa eu justo imperdiet malesuada eu vitae felis. Praesent volutpat suscipit cursus. Cras rutrum leo nec mi aliquam elementum. Fusce posuere faucibus elit, eu faucibus libero tincidunt at. Aliquam aliquam finibus sem. Duis fringilla orci ut convallis laoreet. In lacinia elit nisl, in ultrices arcu molestie vel. Fusce efficitur lorem vitae mattis scelerisque.
+                "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+
+                "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nisl lobortis, hendrerit ex non, tristique felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent eget augue placerat, sagittis arcu vitae, elementum augue. Pellentesque ac tristique velit. Phasellus eleifend quam erat, eget blandit tellus placerat ut. Etiam pharetra tincidunt metus, at porttitor urna pretium dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla pretium dolor in elit accumsan, ac cursus nulla ultricies. Pellentesque consectetur sollicitudin neque, a fermentum lacus pellentesque vitae. Integer sollicitudin vitae nunc id porta. Proin nulla neque, porttitor vel ante id, blandit sodales nulla. Suspendisse a diam sed nibh viverra lacinia egestas ac ligula. Duis risus est, dapibus eget posuere eget, volutpat in felis.
+
+                Nullam vitae elit massa. Phasellus a cursus dolor, eget luctus tellus. Ut scelerisque ipsum ut augue consectetur, at vehicula sapien elementum. Nunc sed pellentesque odio. Sed eu erat tortor. Fusce faucibus turpis a mi maximus, id viverra sapien semper. Phasellus venenatis varius augue a scelerisque. Fusce nec lacus vel tortor vestibulum porta. Duis fermentum tincidunt laoreet. Cras facilisis turpis ut enim efficitur, eu fringilla dui malesuada.
+
+                Mauris et massa eu justo imperdiet malesuada eu vitae felis. Praesent volutpat suscipit cursus. Cras rutrum leo nec mi aliquam elementum. Fusce posuere faucibus elit, eu faucibus libero tincidunt at. Aliquam aliquam finibus sem. Duis fringilla orci ut convallis laoreet. In lacinia elit nisl, in ultrices arcu molestie vel. Fusce efficitur lorem vitae mattis scelerisque.
+            </p>
         </div>
 
 
@@ -46,6 +65,47 @@
             .nav-link:hover {
                 color: #121212;
             }
+
+        #hor_menu {
+            flex-direction: row !important;
+            width: 100px;
+            overflow: auto;
+            height: 100%;
+            position: fixed;
+        }
+            /*Scrolbarr*/
+            #hor_menu::-webkit-scrollbar-button {
+                display: none;
+                height: 13px;
+                border-radius: 0px;
+                background-color: #AAA;
+            }
+
+                #hor_menu::-webkit-scrollbar-button:hover {
+                    background-color: #AAA;
+                }
+
+            #hor_menu::-webkit-scrollbar-thumb {
+                background-color: #CCC;
+            }
+
+                #hor_menu::-webkit-scrollbar-thumb:hover {
+                    background-color: #5bcd2c;
+                }
+
+            #hor_menu::-webkit-scrollbar-track {
+                background-color: #ffffff;
+            }
+
+                #hor_menu::-webkit-scrollbar-track:hover {
+                    background-color: #ffffff;
+                }
+
+            #hor_menu::-webkit-scrollbar {
+                width: 8px;
+            }
+        /**/
+
     </style>
 
 }

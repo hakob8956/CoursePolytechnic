@@ -5,18 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" asp-href-include="~/lib/img/favicon.png" type="image/png">
-    <title>Learn IT Education</title>
+    <title>@ViewData["Title"]</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" asp-href-include="~/lib/css/bootstrap.css">
     <link rel="stylesheet" asp-href-include="~/lib/vendors/linericon/style.css">
-    <link rel="stylesheet" asp-href-include="~/lib/css/font-awesome.min.css">
     <link rel="stylesheet" asp-href-include="~/lib/vendors/owl-carousel/owl.carousel.min.css">
     <link rel="stylesheet" asp-href-include="~/lib/vendors/lightbox/simpleLightbox.css">
     <link rel="stylesheet" asp-href-include="~/lib/vendors/nice-select/css/nice-select.css">
     <link rel="stylesheet" asp-href-include="~/lib/vendors/animate-css/animate.css">
     <link rel="stylesheet" asp-href-include="~/lib/vendors/popup/magnific-popup.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
     <!-- main css -->
-    <link rel="stylesheet" asp-href-include="~/lib/css/style.css">
+    <link rel="stylesheet" asp-href-include="~/lib/css/style.min.css">
     <link rel="stylesheet" asp-href-include="~/lib/css/responsive.css">
     @RenderSection("Style", false)
 </head>
@@ -28,10 +29,9 @@
             <div class="container">
                 <div class="float-left">
                     <ul class="list header_social">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-vk"></i></a></li>
                     </ul>
                 </div>
                 <div class="float-right">
@@ -41,34 +41,7 @@
             </div>
         </div>
         <div class="main_menu">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <a class="navbar-brand logo_h" href="index.html"><img src="~/lib//lib/img/logo.png" alt=""></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a>
-                                    <li class="nav-item"><a class="nav-link" href="course-details.html">Course Details</a></li>
-                                </ul>
-                            </li>
-
-
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            @Html.Partial("ShowMainMenu")
         </div>
     </header>
     <!--================Header Menu Area =================-->
@@ -78,22 +51,37 @@
             <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="banner_content text-center">
-                    <h2>Course Details</h2>
-                    <div class="page_link">
-                        <a asp-controller="Home" asp-action="Index">Home</a>
-                        <a asp-controller="Course" asp-action="Index">Course</a>
-                        <a href="#">Course Details</a>
-                    </div>
+                    <h2>Course</h2>
+                    <breadcrumb></breadcrumb>
                 </div>
             </div>
         </div>
     </section>
+    
     <!--================End Home Banner Area =================-->
 
     @RenderBody()
 
-    <!--================ start footer Area  =================-->
-    <!--================ End footer Area  =================-->
+    @*<!--================ start footer Area  =================-->
+    <footer class="footer-area">
+        <div class="container">
+
+            <div class="row footer-bottom d-flex justify-content-between align-items-center">
+                <p class="col-lg-8 col-md-8 footer-text m-0">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;
+                    All rights reserved
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+                <div class="col-lg-4 col-md-4 footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--================ End footer Area  =================-->*@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script asp-src-include="~/lib/js/jquery-3.3.1.min.js"></script>

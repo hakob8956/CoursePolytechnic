@@ -1,10 +1,9 @@
 ﻿@model ExerciseViewModel
 
 <div>
-    <h2 align="center">Example Lorem Ipsum</h2>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et finibus augue. Pellentesque imperdiet nisi in orci fringilla faucibus. Vestibulum leo erat, venenatis nec scelerisque vitae, cursus et nisl. Aenean nec eros sed tellus auctor molestie. Pellentesque fermentum, nisl vel accumsan porttitor, turpis enim eleifend lorem, id condimentum nunc nisl sed sem. Vestibulum pellentesque lorem dolor, et varius diam rhoncus quis. Integer nisl sapien, lobortis at facilisis eleifend, consequat a sem. Sed non nisi sed magna feugiat dictum. Mauris nec dapibus lectus. Aenean vel efficitur diam. Etiam mi justo, scelerisque ac leo quis, faucibus suscipit neque.
-
-    Nulla ligula mi, consectetur a venenatis ac, molestie sed magna. Nunc molestie luctus porttitor. Mauris porttitor faucibus sagittis. Donec vehicula, lectus at commodo eleifend, dui metus varius ipsum, vehicula iaculis nisi dolor et sapien. Etiam dui urna, consequat a tincidunt sed, blandit a quam. Vivamus ut tincidunt lorem, ac fermentum tellus. Phasellus eget tortor mattis, iaculis turpis non, cursus libero. Vivamus feugiat vel arcu viverra laoreet.
+    <h2 align="center">@Model.Exercise.Title</h2>
+    @Model.Exercise.Text
+    
 </div>
 <div style="margin-top:80px;margin-bottom:150px">
     <form method="post" asp-controller="Course" asp-action="Course">

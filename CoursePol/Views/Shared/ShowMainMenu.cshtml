@@ -1,1 +1,95 @@
 ﻿
+<nav class="navbar navbar-expand-sm navbar-light">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <a class="navbar-brand logo_h" href="index.html"><img src="~/lib//lib/img/logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav ml-auto">
+                <li class="nav-item active"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+
+                @*<li class="nav-item submenu dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a class="nav-link" asp-controller="Course" asp-action="Index" >Courses</a>
+                            <li class="nav-item"><a class="nav-link" href="course-details.html">Course Details</a></li>
+                        </ul>
+                    </li>*@
+
+
+                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                <li class="nav-item dropdown">
+
+                    <a href="#" class="dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:black">
+                        <i class="far fa-user-circle" style="font-size:15px"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" style="background-color:#FDFDFD;width:230px">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <form asp-action="Index" asp-controller="Profile">
+                                <button type="submit" class="btn btn-link" style="font-size:12px">
+                                    My Profile
+                                </button>
+                            </form>
+                            if (User.IsInRole("admin"))
+                            {
+                                <form asp-action="Index" asp-controller="Admin">
+                                    <button type="submit" class="btn btn-link" style="font-size:12px">
+                                        Admin Panel
+                                    </button>
+                                </form>
+
+                            }
+
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
+                            {
+                                <button type="submit" class="btn btn-link" style="font-size:12px">
+                                    Log Out
+                                </button>
+                            }
+
+                        }
+                        else
+                        {
+                            <form class="px-4 py-3" method="post" asp-controller="Account" asp-action="Login">
+                                <div class="form-group">
+                                    <label class="typo-list">Email address</label>
+                                    <input type="email" name="Email" class="form-control single-input" placeholder="email@example.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'email@example.com'">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleDropdownFormPassword1" class="typo-list">Password</label>
+                                    <input type="password" class="form-control single-input" name="Password" placeholder="Enter your password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your password'">
+                                </div>
+                                <div class="form-check">
+
+                                    <div class="primary-checkbox" style="display:inline-block">
+                                        <input type="checkbox" id="default-checkbox">
+                                        <label for="default-checkbox"></label>
+                                    </div>
+                                    <p style="display:inline-block">Remember</p>
+                                </div>
+                                <button type="submit" class="genric-btn success radius btn-sm " style="width:100%"><p style="font-size:12px;display:inline">Sign in</p></button>
+                            </form>
+                            <div class="dropdown-divider"></div>
+                            @*<a class="dropdown-item" asp-action="Register" asp-controller="Account">New around here? Sign up</a>*@
+                            <a class="dropdown-item" href="#">Forgot password?</a>
+                        }
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+    #dropdownMenuLink:hover {
+        color: #65D634 !important;
+    }
+</style>
+
+

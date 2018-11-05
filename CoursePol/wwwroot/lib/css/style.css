@@ -1,4 +1,4 @@
-/*----------------------------------------------------
+﻿/*----------------------------------------------------
 @File: Default Styles
 @Author: Rocky Ahmed
 @URL: http://wethemez.com
@@ -1247,7 +1247,7 @@ button:focus {
     background: #2faae6; }
 
 .success {
-  background: #4cd3e3; }
+  background: #4dbf1c; }
   .success:before {
     background: #2ebccd; }
 
@@ -1275,10 +1275,10 @@ button:focus {
 
 .success-border {
   background: transparent;
-  border: 1px solid #4cd3e3;
-  color: #4cd3e3; }
+  border: 1px solid #4dbf1c;
+  color: #4dbf1c; }
   .success-border:before {
-    background: #4cd3e3; }
+    background: #4dbf1c; }
 
 .info-border {
   background: transparent;
@@ -1539,22 +1539,22 @@ h6 {
 
 .genric-btn.success {
   color: #fff;
-  background: #4cd3e3;
+  background: #4dbf1c;
   border: 1px solid transparent; }
 
 .genric-btn.success:hover {
-  color: #4cd3e3;
-  border: 1px solid #4cd3e3;
+  color: #4dbf1c;
+  border: 1px solid #4dbf1c;
   background: #fff; }
 
 .genric-btn.success-border {
-  color: #4cd3e3;
-  border: 1px solid #4cd3e3;
+  color: #4dbf1c;
+  border: 1px solid #4dbf1c;
   background: #fff; }
 
 .genric-btn.success-border:hover {
   color: #fff;
-  background: #4cd3e3;
+  background: #4dbf1c;
   border: 1px solid transparent; }
 
 .genric-btn.info {
@@ -2046,7 +2046,7 @@ h6 {
   left: 19px; }
 
 .confirm-switch input:checked + label:before {
-  background: #4cd3e3; }
+  background: #4dbf1c; }
 
 .primary-checkbox {
   width: 16px;
@@ -3121,3 +3121,41 @@ h6 {
 /*---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */
+/*my style*/
+.myBreadcrumb {
+    display: inline-block;
+}
+
+.breadcrumb {
+    background-color: transparent !important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    font-family: Linearicons-Free !important;
+    content: "" !important;
+    color: #fff !important;
+}
+
+.breadcrumb-item:hover + .breadcrumb-item::before {
+    font-family: Linearicons-Free !important;
+    color: #4dbf1c !important;
+}
+
+.breadcrumb-item a {
+    font-family: Linearicons-Free !important;
+    color: #fff !important;
+}
+
+.breadcrumb-item:hover a {
+    color: #4dbf1c !important;
+}
+
+.breadcrumb-item.active {
+    font-family: Linearicons-Free !important;
+    cursor: pointer;
+    color: #fff !important;
+}
+
+    .breadcrumb-item.active:hover {
+        color: #4dbf1c !important;
+    }
