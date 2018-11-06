@@ -3,14 +3,14 @@
 
 <div class="grid_item wd44">
     <div class="courses_item">
-        <img src="/lib/img/courses/course-1.jpg" alt="">@*Add image href*@
+        <img src="/lib/img/courses/course-1.jpg" alt="" >@*Add image href*@
         <div class="hover_text">
 
-            <a asp-action="CourseDetails" asp-controller="Course" asp-route-courseID="@Model.CourseID"><h4>@Model.Title</h4></a>
+            <a asp-action="CourseDetails" asp-controller="Course" asp-route-courseID="@Model.CourseID" ><h4>@Model.Title</h4></a>
             <ul class="list">
                 <li><a href="#"><i class="lnr lnr-users"></i>0</a></li>@*TODO Add Users folower*@
                 <li><a href="#"><i class="lnr lnr-bubble"></i>0</a></li>@*TODO Add Course Comment*@
-                <li><a href="#"><i class="lnr lnr-user"></i>@Model.Author</a></li>
+                <li><a href="#"><i class="lnr lnr-user "></i>@Model.Author</a></li>
             </ul>
         </div>
     </div>

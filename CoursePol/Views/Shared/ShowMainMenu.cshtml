@@ -21,14 +21,14 @@
                         </ul>
                     </li>*@
 
-
+                <li class="nav-item"><a class="nav-link" asp-action="Index" asp-controller="Course">Course</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                 <li class="nav-item dropdown">
 
-                    <a href="#" class="dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:black">
+                    <a href="#" class="dropdown-toggle nav-link" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:black">
                         <i class="far fa-user-circle" style="font-size:15px"></i>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" style="background-color:#FDFDFD;width:230px">
+                    <div class="dropdown-menu dropdown-menu-right" style="background-color:#FDFDFD">
                         @if (User.Identity.IsAuthenticated)
                         {
                             <form asp-action="Index" asp-controller="Profile">
@@ -86,10 +86,32 @@
     </div>
 </nav>
 
-<style>
-    #dropdownMenuLink:hover {
-        color: #65D634 !important;
-    }
-</style>
+    <style>
+        #dropdownMenuLink:hover {
+            color: #65D634 !important;
+        }
+
+
+        .btn-link:hover, .btn-link:focus {
+            color: #65D634;
+            text-decoration: none;
+        }
+
+        .btn-link {
+            font-family: "Roboto";
+            color: #16181b;
+        }
+
+        /*.dropdown:hover > .dropdown-menu {
+            display: block;
+        }*/
+
+        .dropdown > .dropdown-menu !important {
+            display: none;
+        }
+    </style>
+
+
+
 
 

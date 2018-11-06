@@ -1,8 +1,8 @@
-﻿@model ExerciseViewModel
+﻿@model Exercise
 
 <div>
-    <h2 align="center">@Model.Exercise.Title</h2>
-    @Model.Exercise.Text
+    <h2 align="center">@Model.Title</h2>
+    @Model.Text
     
 </div>
 <div style="margin-top:80px;margin-bottom:150px">
@@ -11,8 +11,8 @@
             <label class="form-check-label">My Text Area</label>
             <textarea class="form-control" placeholder="There youre code..." name="Text"></textarea>
         </div>
-        <input type="hidden" value="1" />
-
+        <input type="hidden" value="@Model.ID" name="ID" />
+        <input type="hidden" value="@Model.CourseID" name="CourseID" />
         <input type="submit" class="genric-btn success-border circle arrow float-right" value="Submit" />
     </form>
 </div>

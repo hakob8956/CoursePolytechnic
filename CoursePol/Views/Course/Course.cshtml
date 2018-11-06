@@ -5,10 +5,10 @@
 @model IEnumerable<Exercise>
 <div class="container">
     <div class="row">
-        <div class="col-sm-2 bd-sidebar">
+        <div class="col-sm-2 mediaDiv" style="">
 
-            <ul class="nav flex-column" style="position:fixed" id="hor_menu">
-                @*@foreach (var item in Model)
+            <ul class="nav  mediaCollapse hor_menu">
+                @foreach (var item in Model)
                     {
                         <li class="nav-item">
 
@@ -16,14 +16,15 @@
                         </li>
 
 
-                    }*@
-                @for (int i = 0; i < 90; i++)
+                    }
+                @* For test  *@
+                @*@for (int i = 0; i < 90; i++)
                 {
                     <li class="nav-item">
 
                         <a class="nav-link myExercise" href="#">item @i</a>
                     </li>
-                }
+                }*@
 
             </ul>
 
@@ -58,6 +59,26 @@
 </div>
 @section Style{
     <style>
+        @@media (max-width: 990px) {
+            .mediaDiv {
+                width: 100%;
+                height: 3em;
+                flex-basis: 0 !important;
+                flex-grow: 1 !important;
+                max-width: 100% !important;
+                box-shadow: 0 0 10px rgba(217, 217, 217, 0.5);
+            }
+
+            .mediaCollapse {
+                height:100%!important;
+                position: relative !important;
+                flex-direction: column !important;
+                width: 100% !important;
+                flex-wrap:wrap!important;
+                
+            }
+        }
+
         .nav-link {
             color: #3E3E3E;
         }
@@ -66,44 +87,47 @@
                 color: #121212;
             }
 
-        #hor_menu {
-            flex-direction: row !important;
-            width: 100px;
-            overflow: auto;
-            height: 100%;
+        .hor_menu {
             position: fixed;
+            /*width: 250px;*/
+            flex-wrap:nowrap;
+            overflow: auto;
+            height: 20em;
+            position: fixed;
+            flex-direction: column;
+            
         }
             /*Scrolbarr*/
-            #hor_menu::-webkit-scrollbar-button {
+        .hor_menu::-webkit-scrollbar-button {
                 display: none;
                 height: 13px;
                 border-radius: 0px;
                 background-color: #AAA;
             }
 
-                #hor_menu::-webkit-scrollbar-button:hover {
-                    background-color: #AAA;
-                }
+        ․hor_menu::-webkit-scrollbar-button:hover {
+            background-color: #AAA;
+        }
 
-            #hor_menu::-webkit-scrollbar-thumb {
-                background-color: #CCC;
-            }
+        .hor_menu::-webkit-scrollbar-thumb {
+            background-color: #CCC;
+        }
 
-                #hor_menu::-webkit-scrollbar-thumb:hover {
-                    background-color: #5bcd2c;
-                }
+        ․hor_menu::-webkit-scrollbar-thumb:hover {
+            background-color: #5bcd2c;
+        }
 
-            #hor_menu::-webkit-scrollbar-track {
-                background-color: #ffffff;
-            }
+        .hor_menu::-webkit-scrollbar-track {
+            background-color: #ffffff;
+        }
 
-                #hor_menu::-webkit-scrollbar-track:hover {
-                    background-color: #ffffff;
-                }
+        ․hor_menu::-webkit-scrollbar-track:hover {
+            background-color: #ffffff;
+        }
 
-            #hor_menu::-webkit-scrollbar {
-                width: 8px;
-            }
+        .hor_menu::-webkit-scrollbar {
+            width: 8px;
+        }
         /**/
 
     </style>

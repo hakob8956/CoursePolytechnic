@@ -136,27 +136,27 @@ namespace CoursePol.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Course(ExerciseViewModel model)
+        public async Task<IActionResult> Course(Exercise model)
         {
             var user = await GetCurrentUserAsync();
             if (user != null)
             {
-                FileInfo folder = new FileInfo($"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User{model.UserID}");
+                FileInfo folder = new FileInfo($"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User[{user.Id}]");
                 if (!folder.Exists)
                 {
-                    Directory.CreateDirectory($"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User{model.UserID}");
+                    Directory.CreateDirectory($"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User[{user.Id}]");
                 }
-                string path = $"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User{model.UserID}/exercise{model.Exercise.ID}.txt";
+                string path = $"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User[{user.Id}]/exercise[{model.ID}].txt";
                 FileInfo fi1 = new FileInfo(path);
-
+               
                 using (StreamWriter sw = new StreamWriter(path, false, System.Text.Encoding.Default))
                 {
-                    sw.WriteLine(model.Exercise.Text);
+                    sw.WriteLine(model.Text);
                 }
-
+                return Ok();
             }
 
-            return View(model);
+            return BadRequest();
 
         }
 
