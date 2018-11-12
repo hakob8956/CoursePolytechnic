@@ -19,8 +19,8 @@
     <link rel="stylesheet" asp-href-include="~/lib/css/style.min.css">
     <link rel="stylesheet" asp-href-include="~/lib/css/responsive.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-
-
+    <link rel="stylesheet" asp-href-include="~/lib/highlight/styles/default.css" />
+    <link rel="stylesheet" asp-href-include="~/lib/codemirror/codemirror.css" />
 
 
     @RenderSection("Style", false)
@@ -34,7 +34,7 @@
 
 
     </header>
-    
+
 
     <div class="container">
         @RenderBody()
@@ -43,23 +43,23 @@
 
     @* Footer *@
     @*<footer class="footer-area">
-        <div class="container">
+            <div class="container">
 
-            <div class="row footer-bottom d-flex justify-content-between align-items-center">
-                <p class="col-lg-8 col-md-8 footer-text m-0">
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;
-                    All rights reserved
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </p>
-                <div class="col-lg-4 col-md-4 footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-vk"></i></a>
+                <div class="row footer-bottom d-flex justify-content-between align-items-center">
+                    <p class="col-lg-8 col-md-8 footer-text m-0">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        All rights reserved
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                    <div class="col-lg-4 col-md-4 footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>*@
+        </footer>*@
     <!--================ End footer Area  =================-->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -79,6 +79,8 @@
     <script asp-src-include="~/lib/js/mail-script.js"></script>
     <script asp-src-include="~/lib/js/theme.js"></script>
     <script asp-src-include="~/lib/vendors/jquery/dist/jquery.min.js"></script>
+    <script asp-src-include="~/lib/codemirror/codemirror.js"></script>
+   
 
     <script>
 
@@ -95,6 +97,7 @@
         });
     </script>
     @RenderSection("Scripts", false)
+
 
 
 

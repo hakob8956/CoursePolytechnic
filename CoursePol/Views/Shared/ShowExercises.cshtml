@@ -3,16 +3,57 @@
 <div>
     <h2 align="center">@Model.Title</h2>
     @Model.Text
-    
+
 </div>
 <div style="margin-top:80px;margin-bottom:150px">
-    <form method="post" asp-controller="Course" asp-action="Course">
+    <form method="post" asp-controller="Course" asp-action="Course" id="pascalSubmitForm">
+        <p id="outputText" class="text-danger"></p>
         <div class="form-group">
             <label class="form-check-label">My Text Area</label>
-            <textarea class="form-control" placeholder="There youre code..." name="Text"></textarea>
+            <div id="loading"></div>
+            <textarea class="form-control" placeholder="There youre code..." name="Text" id="Text" style="height: 250px;"></textarea>
         </div>
-        <input type="hidden" value="@Model.ID" name="ID" />
-        <input type="hidden" value="@Model.CourseID" name="CourseID" />
+        <input type="hidden" value="@Model.ID" name="ID" id="ID" />
+        <input type="hidden" value="@Model.CourseID" name="CourseID" id="CourseID" />
+
+
         <input type="submit" class="genric-btn success-border circle arrow float-right" value="Submit" />
     </form>
+
 </div>
+
+<script type="text/javascript">
+
+
+    $("#pascalSubmitForm").submit(function (event) {
+        event.preventDefault();
+        var testData =
+        {
+            'ID': $("#ID").val(),
+            'CourseID': $("#CourseID").val(),
+            'Text': $("#Text").val(),
+        };
+        $('#loading').html('<img src="/lib/img/loader/loader.gif"/>');
+        $("#outputText").html("");
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("Course","Course")',
+            data: JSON.stringify(testData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: successFunc,
+            error: errorFunc
+        });
+    });
+    function successFunc(data, status) {
+       
+       $("#outputText").html(data);
+       $('#loading').html("").hide();
+
+    }
+
+    function errorFunc(errorData) {
+        $('#loading').html("").hide();
+        alert('Ошибка' + errorData.responseText);
+    }
+</script>

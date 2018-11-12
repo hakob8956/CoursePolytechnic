@@ -5,9 +5,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SmartBreadcrumbs;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using PascalChecker;
+
 
 
 namespace CoursePol.Controllers
@@ -27,7 +30,7 @@ namespace CoursePol.Controllers
             _course = course;
             _folower = folower;
         }
-        [Breadcrumb("ViewData.Title", CacheTitle = true, FromAction = "Home.Index")]
+        [Breadcrumb("Courses", CacheTitle = true, FromAction = "Home.Index")]
         public IActionResult Index()
         {
             ViewData["Title"] = "Courses";
@@ -110,7 +113,7 @@ namespace CoursePol.Controllers
             }
             return NotFound();
         }
-
+        //TODO ADD FOLOWER
         public async Task<IActionResult> AddFolower(int? courseID)
         {
             var user = await GetCurrentUserAsync();
@@ -134,31 +137,43 @@ namespace CoursePol.Controllers
             return BadRequest();
         }
 
-
         [HttpPost]
-        public async Task<IActionResult> Course(Exercise model)
+        public async Task<JsonResult> Course([FromBody]Exercise model)
         {
+            
+            //TODO FIX PATH PASCAL
+           
             var user = await GetCurrentUserAsync();
             if (user != null)
             {
-                FileInfo folder = new FileInfo($"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User[{user.Id}]");
-                if (!folder.Exists)
+                FileInfo folder1 = new FileInfo($"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User[{user.Id}]");
+                if (!folder1.Exists)
                 {
-                    Directory.CreateDirectory($"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User[{user.Id}]");
+                    Directory.CreateDirectory(folder1.FullName);
+                  
                 }
-                string path = $"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User[{user.Id}]/exercise[{model.ID}].txt";
+                FileInfo folder2 = new FileInfo(folder1.FullName + $"/exercise[{model.ID}]");
+                if (!folder2.Exists)
+                {
+                    Directory.CreateDirectory(folder2.FullName);
+
+                }
+                string path = $"{folder2.FullName}/exercise[{model.ID}].pas";
                 FileInfo fi1 = new FileInfo(path);
-               
+
                 using (StreamWriter sw = new StreamWriter(path, false, System.Text.Encoding.Default))
                 {
                     sw.WriteLine(model.Text);
                 }
-                return Ok();
+                bool a = Pascal.BuildOutput(folder2.FullName, Path.GetFileNameWithoutExtension(fi1.Name));
+                string output= a ? $"Output:{Pascal.GetOutput(folder2.FullName)}" : "Error";
+                return Json(output);
             }
 
-            return BadRequest();
+            return Json("Error");
 
         }
+       
 
 
     }

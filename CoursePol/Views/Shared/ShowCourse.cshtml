@@ -64,7 +64,7 @@
                         <li><a href="#">Seats <span>15</span></a></li>
                         <li>@*<a href="#">Schedule <span>2.00 pm to 4.00 pm</span></a>*@</li>
                     </ul>
-                    <form asp-action="AddFolower" asp-controller="Course" method="post">
+                    <form asp-action="Course" asp-controller="Course" method="get">
                         <input type="hidden" value="@Model.CourseID"  name="courseID"/>
                         <button class="main_btn"  type="submit" style="width:100%">Enroll the Course</button>
 

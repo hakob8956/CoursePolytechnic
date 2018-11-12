@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,10 +16,6 @@
 
   <ItemGroup>
     <Content Remove="bundleconfig.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\pascalFile\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +38,14 @@
     <PackageReference Include="Microsoft.AspNetCore.Html.Abstractions" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.1" />
     <PackageReference Include="SmartBreadcrumbs" Version="1.0.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PascalChecker\PascalChecker.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\pascalFile\" />
   </ItemGroup>
 
 </Project>
