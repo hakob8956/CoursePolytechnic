@@ -165,8 +165,8 @@ namespace CoursePol.Controllers
                 {
                     sw.WriteLine(model.Text);
                 }
-                bool a = Pascal.BuildOutput(folder2.FullName, Path.GetFileNameWithoutExtension(fi1.Name));
-                string output= a ? $"Output:{Pascal.GetOutput(folder2.FullName)}" : "Error";
+                bool a = Pascal.BuildOutput(2,folder2.FullName, Path.GetFileNameWithoutExtension(fi1.Name));
+                string output= a ? $"Output:{Pascal.GetFileContent(folder2.FullName)}" : "Error";
                 return Json(output);
             }
 
@@ -176,6 +176,6 @@ namespace CoursePol.Controllers
        
 
 
-    }
+    } 
 
 }

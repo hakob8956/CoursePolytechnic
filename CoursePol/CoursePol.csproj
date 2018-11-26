@@ -45,7 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\pascalFile\" />
+    <Folder Include="wwwroot\pascalFile\GeneralSolution\" />
   </ItemGroup>
 
 </Project>

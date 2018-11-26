@@ -1,0 +1,24 @@
+# Linux version
+
+language: generic
+sudo: required
+dist: trusty
+
+os:
+  - linux
+
+install:
+  - ./install.sh
+
+branches:
+  only:
+  - develop
+
+script:
+  - lazbuild ProjectEuler.lpi
+  - ./ProjectEuler
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
