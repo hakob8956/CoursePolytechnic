@@ -30,5 +30,6 @@ procedure TTestCaseSolution2.TestResult;
 begin
 
   Check(Solutions.Solution2(5,4,3) = 5, 'Incorrect');
+  Check(Solutions.Solution2(6,4,3) = 6, 'Incorrect');
 end;
 end.

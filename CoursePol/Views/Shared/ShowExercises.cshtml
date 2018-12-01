@@ -11,7 +11,13 @@
         <div class="form-group">
             <label class="form-check-label">My Text Area</label>
             <div id="loading"></div>
-            <textarea class="form-control" placeholder="There youre code..." name="Text" id="Text" style="height: 250px;"></textarea>
+            <div id="Text" style="height:250px;width:550px" name="Text">
+                var data="hello";
+                function say(){
+                console.log(data);
+                }
+            </div>
+        
         </div>
         <input type="hidden" value="@Model.ID" name="ID" id="ID" />
         <input type="hidden" value="@Model.CourseID" name="CourseID" id="CourseID" />
@@ -23,15 +29,18 @@
 </div>
 
 <script type="text/javascript">
-
+    //For TextEditor
+    var e = ace.edit("Text");
+    e.getSession().setMode("ace/mode/pascal");
 
     $("#pascalSubmitForm").submit(function (event) {
         event.preventDefault();
+        $('#loading').html("").show();
         var testData =
         {
             'ID': $("#ID").val(),
             'CourseID': $("#CourseID").val(),
-            'Text': $("#Text").val(),
+            'Text': e.getValue(),
         };
         $('#loading').html('<img src="/lib/img/loader/loader.gif"/>');
         $("#outputText").html("");
@@ -54,6 +63,6 @@
 
     function errorFunc(errorData) {
         $('#loading').html("").hide();
-        alert('Ошибка' + errorData.responseText);
+        alert('Error' + errorData.responseText);
     }
 </script>

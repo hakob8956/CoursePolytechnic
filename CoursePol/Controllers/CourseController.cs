@@ -139,10 +139,8 @@ namespace CoursePol.Controllers
 
         [HttpPost]
         public async Task<JsonResult> Course([FromBody]Exercise model)
-        {
-            
-            //TODO FIX PATH PASCAL
-           
+        {           
+            //TODO FIX PATH PASCAL         
             var user = await GetCurrentUserAsync();
             if (user != null)
             {
@@ -165,8 +163,8 @@ namespace CoursePol.Controllers
                 {
                     sw.WriteLine(model.Text);
                 }
-                bool a = Pascal.BuildOutput(2,folder2.FullName, Path.GetFileNameWithoutExtension(fi1.Name));
-                string output= a ? $"Output:{Pascal.GetFileContent(folder2.FullName)}" : "Error";
+                bool a = Pascal.BuildOutput(2,folder2.FullName, Path.GetFileNameWithoutExtension(fi1.Name));//TODO first input-->it's id exercise (test)
+                string output= a ? $"Output:True" : "Output:False";
                 return Json(output);
             }
 
