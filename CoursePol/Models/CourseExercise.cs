@@ -9,6 +9,10 @@ namespace CoursePol.Models
         public string UserID { get; set; }
         public int CourseID { get; set; }
         public int ExercisesID { get; set; }
-        public int Completed { get; set; }//1,-1,0
+        public string Text { get; set; }
+        public int Completed { get; set; } = 0;//1,-1,0 :--  1 - complete, -1 - no complete, 0 - none
+
+
+
     }
 }

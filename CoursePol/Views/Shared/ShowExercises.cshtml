@@ -17,7 +17,7 @@
             </div>
 
         </div>
-        <input type="hidden" value="@Model.ID" name="ID" id="ID" />
+        <input type="hidden" value="@Model.ID" name="ExercisesID" id="ExercisesID" />
         <input type="hidden" value="@Model.CourseID" name="CourseID" id="CourseID" /><!--TODO FIX DELETE -->
 
 
@@ -36,7 +36,7 @@
         $('#loading').html("").show();
         var testData =
         {
-            'ExerciseID': $("#ID").val(),
+            'ExercisesID': $("#ExercisesID").val(),
             'CourseID': $("#CourseID").val(),
             'Text': e.getValue(),
         };

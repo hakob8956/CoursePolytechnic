@@ -90,7 +90,8 @@ namespace PascalChecker
         }
         public static bool BuildOutput(int numberSolution, string userPath, string filename)
         {
-        
+            DeleteTempFile(userPath);//Delete output.txt ProjectEuler.exe 
+
             //Code Paste in solution.ps in GeneralSolution
             FileStream solution = new FileStream(GeneralSolution + "solution.pas", FileMode.Create, FileAccess.ReadWrite);
             FileStream test = new FileStream(GeneralSolution + "tests.pas", FileMode.Create, FileAccess.ReadWrite);
@@ -144,7 +145,6 @@ namespace PascalChecker
             OutputProcess.Close();
             //#3 Read output File and delete temp file
             bool output =  ReturnOutput(userPath + "\\output.txt");
-            DeleteTempFile(userPath);//Delete output.txt ProjectEuler.exe 
             return output;
 
 

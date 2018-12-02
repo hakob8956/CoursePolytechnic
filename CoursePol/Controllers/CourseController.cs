@@ -3,13 +3,13 @@ using CoursePol.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using PascalChecker;
 using SmartBreadcrumbs;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using PascalChecker;
 
 
 
@@ -21,14 +21,16 @@ namespace CoursePol.Controllers
         private readonly IExercise _exercise;
         private readonly ICourse _course;
         private readonly IFolower _folower;
+        private readonly ICourseExercise _courseExerciseComplete;
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-        public CourseController(UserManager<User> userManager, IExercise exercise, ICourse course, IFolower folower)
+        public CourseController(UserManager<User> userManager, IExercise exercise, ICourse course, IFolower folower, ICourseExercise courseExerciseComplete)
         {
             _exercise = exercise;
             _userManager = userManager;
             _course = course;
             _folower = folower;
+            _courseExerciseComplete = courseExerciseComplete;
         }
         [Breadcrumb("Courses", CacheTitle = true, FromAction = "Home.Index")]
         public IActionResult Index()
@@ -138,45 +140,66 @@ namespace CoursePol.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> Course([FromBody]Exercise model)
-        {           
+        public async Task<JsonResult> Course([FromBody]CourseExercise model)
+        {
             //TODO FIX PATH PASCAL         
             var user = await GetCurrentUserAsync();
-            var CurrentExercise = _exercise.Exercises.FirstOrDefault(i => i.ID == model.ID);
+            var CurrentExercise = _exercise.Exercises.FirstOrDefault(i => i.ID == model.ExercisesID);
 
             if (user != null && CurrentExercise != null)
             {
-                
+
                 FileInfo folder1 = new FileInfo($"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User[{user.Id}]");
                 if (!folder1.Exists)
                 {
                     Directory.CreateDirectory(folder1.FullName);
-                  
+
                 }
-                FileInfo folder2 = new FileInfo(folder1.FullName + $"/exercise[{model.ID}]");
+                FileInfo folder2 = new FileInfo(folder1.FullName + $"/exercise[{model.ExercisesID}]");
                 if (!folder2.Exists)
                 {
                     Directory.CreateDirectory(folder2.FullName);
 
                 }
-                string path = $"{folder2.FullName}/exercise[{model.ID}].pas";
+                string path = $"{folder2.FullName}/exercise[{model.ExercisesID}].pas";
                 FileInfo fi1 = new FileInfo(path);
 
                 using (StreamWriter sw = new StreamWriter(path, false, System.Text.Encoding.Default))
                 {
                     sw.WriteLine(model.Text);
                 }
-                bool a = Pascal.BuildOutput(CurrentExercise.NumberSolution,folder2.FullName, Path.GetFileNameWithoutExtension(fi1.Name));//TODO first input-->it's id exercise (test)
-                string output= a ? $"Output:True" : "Output:False";
+                bool completed = Pascal.BuildOutput(CurrentExercise.NumberSolution, folder2.FullName, Path.GetFileNameWithoutExtension(fi1.Name));
+                string output = completed ? $"Output:True" : "Output:False";
+                var courseExercise = _courseExerciseComplete.CourseExercises.FirstOrDefault(l => l.ExercisesID == model.ExercisesID && user.Id == l.UserID && l.CourseID == model.CourseID);
+                if (courseExercise == null)
+                {
+                    CourseExercise courseExerciseNewModel = new CourseExercise()
+                    {
+                        CourseID = model.CourseID,
+                        UserID = user.Id,
+                        Text = model.Text,
+                        ExercisesID = model.ExercisesID,
+                        Completed = completed ? 1 : -1
+                    };
+                    _courseExerciseComplete.SaveCourseExercise(courseExerciseNewModel);
+                }
+                else
+                {
+                    courseExercise.Completed = completed ? 1 : -1;
+                    courseExercise.Text = model.Text;
+                    _courseExerciseComplete.SaveCourseExercise(courseExercise);
+                }
+
+
                 return Json(output);
             }
 
             return Json("Error");
 
         }
-       
 
 
-    } 
+
+    }
 
 }

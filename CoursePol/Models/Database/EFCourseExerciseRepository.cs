@@ -47,6 +47,7 @@ namespace CoursePol.Models
                 {
                     dbEntry.ExercisesID = courseExercise.ExercisesID;
                     dbEntry.UserID = courseExercise.UserID;
+                    dbEntry.Text = courseExercise.Text;
                     dbEntry.Completed = courseExercise.Completed;
                 }
             }
