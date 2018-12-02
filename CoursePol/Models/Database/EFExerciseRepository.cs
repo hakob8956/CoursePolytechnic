@@ -45,6 +45,7 @@ namespace CoursePol.Models
                 {
                     dbEntry.Text = exercise.Text;
                     dbEntry.CourseID = exercise.CourseID;
+                    dbEntry.NumberSolution = exercise.NumberSolution;
                     dbEntry.Title = exercise.Title;
                     dbEntry.Points = exercise.Points;
                     dbEntry.CourseID = exercise.CourseID;

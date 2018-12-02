@@ -75,7 +75,12 @@ namespace PascalChecker
         }
         public static void DeleteTempFile(string path)
         {
-            FileInfo file = new FileInfo(path);
+            FileInfo file = new FileInfo(path + "\\output.txt");
+            if (file.Exists)
+            {
+                file.Delete();
+            }
+            file = new FileInfo(GeneralSolution + "ProjectEuler.exe");
             if (file.Exists)
             {
                 file.Delete();
@@ -85,7 +90,7 @@ namespace PascalChecker
         }
         public static bool BuildOutput(int numberSolution, string userPath, string filename)
         {
-            DeleteTempFile(userPath + "\\output.txt");
+        
             //Code Paste in solution.ps in GeneralSolution
             FileStream solution = new FileStream(GeneralSolution + "solution.pas", FileMode.Create, FileAccess.ReadWrite);
             FileStream test = new FileStream(GeneralSolution + "tests.pas", FileMode.Create, FileAccess.ReadWrite);
@@ -105,62 +110,60 @@ namespace PascalChecker
                 writer.Write(GetTestContent(numberSolution));
                 writer.Close();
             }
-
-
             //Link solution.pas to test.pas in ProjectEuler
-            string commands = $"cd {GeneralSolution} \n fpc ProjectEuler.pas \n start /B ProjectEuler.exe > {userPath}\\output.txt";
-            var inner = Task.Factory.StartNew(() =>
+            string[] LinkComands = { $"cd {GeneralSolution}", "fpc ProjectEuler.pas" };
+            string[] OutputComands = { $"cd {GeneralSolution}", $"start /B ProjectEuler.exe > {userPath}\\output.txt" };
+
+            //I divided into two parts 1.Link-->Create ProjectEuler.exe or Not 2.Check ProjectEuler.exe Exist and create output.txt 
+
+            File.WriteAllLines("coms.bat", LinkComands);
+            //#1 Build Project -->Create ProjectEuler.exe
+
+            Process LinkProcess = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            startInfo.FileName = "coms.bat";
+            LinkProcess.StartInfo = startInfo;
+            LinkProcess.Start();
+
+            LinkProcess.WaitForExit();
+            LinkProcess.Close();
+
+            //#2 Read ProjectEuler.exe  into output.txt 
+            FileInfo file = new FileInfo($"{GeneralSolution}ProjectEuler.exe");
+            if (!file.Exists)
             {
-                var process = new Process
-                {
-                    StartInfo = new ProcessStartInfo
-                    {
-                        FileName = "cmd.exe",
-                        RedirectStandardInput = true,
-                        UseShellExecute = false
+                return false;
+            }
+            File.WriteAllLines("coms.bat", OutputComands);
 
-                    }
-                };
-                process.Start();
-
-
-                using (StreamWriter pWriter = process.StandardInput)
-                {
-                    if (pWriter.BaseStream.CanWrite)
-                    {
-                        foreach (var line in commands.Split('\n'))
-                        {
-                            pWriter.WriteLine(line);
-
-                        }
-
-                    }
-                    pWriter.Close();
-                }
-            
-
-
-            }, TaskCreationOptions.RunContinuationsAsynchronously);
-            inner.Wait();
-            Thread.Sleep(4000);
-            return  ReturnOutput(userPath + "\\output.txt");
+            Process OutputProcess = new Process();
+            OutputProcess.StartInfo = startInfo;
+            OutputProcess.Start();
+            OutputProcess.WaitForExit();
+            OutputProcess.Close();
+            //#3 Read output File and delete temp file
+            bool output =  ReturnOutput(userPath + "\\output.txt");
+            DeleteTempFile(userPath);//Delete output.txt ProjectEuler.exe 
+            return output;
 
 
         }
 
         public static bool ReturnOutput(string pathOutput)
         {
+            Thread.Sleep(1000);
             FileInfo output = new FileInfo(pathOutput);
             if (!output.Exists) { return false; }
+            FileStream file = new FileStream(pathOutput, FileMode.Open, FileAccess.Read, FileShare.Read);
 
-            var array = File.ReadAllLines(output.FullName).FirstOrDefault(l => l.Contains("OK: 1 tests"));
-            if (array == null)
+            bool answer = false;
+            using (StreamReader reader = new StreamReader(file))
             {
-                return false;
+                answer = reader.ReadToEnd().Contains("OK: 1 tests");
             }
 
-
-            return true;
+            return answer;
         }
         public static string GetFileContent(string Path)
         {

@@ -12,15 +12,13 @@
             <label class="form-check-label">My Text Area</label>
             <div id="loading"></div>
             <div id="Text" style="height:250px;width:550px" name="Text">
-                var data="hello";
-                function say(){
-                console.log(data);
-                }
+                if a>b then max:=a else max:=b;
+                if max < c then max:=c;
             </div>
-        
+
         </div>
         <input type="hidden" value="@Model.ID" name="ID" id="ID" />
-        <input type="hidden" value="@Model.CourseID" name="CourseID" id="CourseID" />
+        <input type="hidden" value="@Model.CourseID" name="CourseID" id="CourseID" /><!--TODO FIX DELETE -->
 
 
         <input type="submit" class="genric-btn success-border circle arrow float-right" value="Submit" />
@@ -38,7 +36,7 @@
         $('#loading').html("").show();
         var testData =
         {
-            'ID': $("#ID").val(),
+            'ExerciseID': $("#ID").val(),
             'CourseID': $("#CourseID").val(),
             'Text': e.getValue(),
         };
@@ -50,12 +48,13 @@
             data: JSON.stringify(testData),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
+            timeout:0,
             success: successFunc,
             error: errorFunc
         });
     });
     function successFunc(data, status) {
-       
+
        $("#outputText").html(data);
        $('#loading').html("").hide();
 

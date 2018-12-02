@@ -142,8 +142,11 @@ namespace CoursePol.Controllers
         {           
             //TODO FIX PATH PASCAL         
             var user = await GetCurrentUserAsync();
-            if (user != null)
+            var CurrentExercise = _exercise.Exercises.FirstOrDefault(i => i.ID == model.ID);
+
+            if (user != null && CurrentExercise != null)
             {
+                
                 FileInfo folder1 = new FileInfo($"D:/Programming/CoursePol/CoursePol/wwwroot/pascalFile/User[{user.Id}]");
                 if (!folder1.Exists)
                 {
@@ -163,7 +166,7 @@ namespace CoursePol.Controllers
                 {
                     sw.WriteLine(model.Text);
                 }
-                bool a = Pascal.BuildOutput(2,folder2.FullName, Path.GetFileNameWithoutExtension(fi1.Name));//TODO first input-->it's id exercise (test)
+                bool a = Pascal.BuildOutput(CurrentExercise.NumberSolution,folder2.FullName, Path.GetFileNameWithoutExtension(fi1.Name));//TODO first input-->it's id exercise (test)
                 string output= a ? $"Output:True" : "Output:False";
                 return Json(output);
             }
