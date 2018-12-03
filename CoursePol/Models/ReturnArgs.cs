@@ -1,6 +1,4 @@
-﻿
-
-namespace CoursePol.Models
+﻿namespace CoursePol.Models
 {
     public class ReturnArgs
     {
@@ -8,3 +6,4 @@ namespace CoursePol.Models
         public string ViewString { get; set; }
     }
 }
+

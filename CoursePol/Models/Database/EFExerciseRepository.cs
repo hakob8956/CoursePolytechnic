@@ -47,6 +47,7 @@ namespace CoursePol.Models
                     dbEntry.CourseID = exercise.CourseID;
                     dbEntry.NumberSolution = exercise.NumberSolution;
                     dbEntry.Title = exercise.Title;
+                    dbEntry.Template = exercise.Template;
                     dbEntry.Points = exercise.Points;
                     dbEntry.CourseID = exercise.CourseID;
                 }

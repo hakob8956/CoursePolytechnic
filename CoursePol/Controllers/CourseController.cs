@@ -155,13 +155,13 @@ namespace CoursePol.Controllers
                     Directory.CreateDirectory(folder1.FullName);
 
                 }
-                FileInfo folder2 = new FileInfo(folder1.FullName + $"/exercise[{model.ExercisesID}]");
+                FileInfo folder2 = new FileInfo(folder1.FullName + $"/exercise[{CurrentExercise.NumberSolution}]");
                 if (!folder2.Exists)
                 {
                     Directory.CreateDirectory(folder2.FullName);
 
                 }
-                string path = $"{folder2.FullName}/exercise[{model.ExercisesID}].pas";
+                string path = $"{folder2.FullName}/exercise[{CurrentExercise.NumberSolution}].pas";
                 FileInfo fi1 = new FileInfo(path);
 
                 using (StreamWriter sw = new StreamWriter(path, false, System.Text.Encoding.Default))

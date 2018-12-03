@@ -12,6 +12,7 @@ namespace CoursePol.Models
         public int NumberSolution { get; set; }
         public string Title { get; set; }
         public string Text { get; set; }
+        public string Template { get; set; }
         public int Points { get; set; }
     }
 }

@@ -16,44 +16,38 @@ namespace PascalChecker
         private readonly static object lockForStream = new object();
         public static string GetSolutionContent(int numberSolution, string content)//numberner@ @st xndragrqi,content-@ useri-cod@(submit)
         {
-            switch (numberSolution)
-            {
-                case 1://For Test "Hello World"
-                    content = $@"function Solution{numberSolution}: Int64;
-                              implementation
-                                 function Solution{numberSolution}: Int64;
-                            
-	                         begin
-		                        {content} 
-		                        Solution1:=2;
-	                         end;";
-                    break;
-                case 2://orinak gtnel max
-                    content = $@"function Solution{numberSolution}(a,b,c: Int64): Int64;
-                              implementation
-                                 function Solution{numberSolution}(a,b,c: Int64): Int64;
-                                 var max:Int64;
-	                             begin
-		                            {content}
-		                            Solution2:=max;
-	                             end;";
-                    break;
-                case 3:
-                    content = @"";
-                    break;
-                default:
-                    content = @"";
-                    break;
-            }
-            //TODO Fix Output always Int64
-            string output = $@"unit Solutions;
-                            {{$mode tp}}
-                            {{$H+}}
-                            interface
-                            uses
-                              SysUtils;
-                               {content}                    
-                            end.";
+            //switch (numberSolution)
+            //{
+            //    case 1://For Test "Hello World"
+            //        content = $@"function Solution{numberSolution}: Int64;
+            //                  implementation
+            //                     function Solution{numberSolution}: Int64;
+
+            //              begin
+            //              {content} 
+            //              Solution1:=2;
+            //              end;";
+            //        break;
+            //    case 2://orinak gtnel max
+            //        content = $@"{content}";
+            //        break;
+            //    case 3:
+            //        content = @"";
+            //        break;
+            //    default:
+            //        content = @"";
+            //        break;
+            //}
+
+            string output =
+$@"unit Solutions;
+{{$mode tp}}
+{{$H+}}
+interface
+uses
+  SysUtils;
+   {content}                    
+end.";
             return output;
         }
 
@@ -144,7 +138,7 @@ namespace PascalChecker
             OutputProcess.WaitForExit();
             OutputProcess.Close();
             //#3 Read output File and delete temp file
-            bool output =  ReturnOutput(userPath + "\\output.txt");
+            bool output = ReturnOutput(userPath + "\\output.txt");
             return output;
 
 
