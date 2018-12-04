@@ -84,14 +84,14 @@
    
 
     <script>
-
+      
         $(document).ready(function () {
 
             $('a.myExercise').on('click', function (e) {
-                e.preventDefault();
-
+                e.preventDefault();             
                 var id = $(this).attr("id");
-                $("#content").load("/Course/Exercise", { _exerciseID: id });
+                //changeurl(id);
+                $("#content").load("/Course/AjaxExercise", { _exerciseID: id });
 
             });
             ``

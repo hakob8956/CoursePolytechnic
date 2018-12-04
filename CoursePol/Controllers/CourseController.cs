@@ -60,7 +60,8 @@ namespace CoursePol.Controllers
         }
         [Breadcrumb("ViewData.Title", CacheTitle = true, FromAction = "Course.CourseDetails")]
         [Authorize]
-        public IActionResult Course(int? courseID)
+       
+        public IActionResult Course(int? courseID,int? solutionID)
         {
 
             if (courseID == null)
@@ -70,20 +71,57 @@ namespace CoursePol.Controllers
             var Course = _course.Courses.FirstOrDefault(c => c.CourseID == courseID);//for ViewData
             if (Course != null)
             {
-                var CourseExercise = _exercise.Exercises.Where(c => c.CourseID == Course.CourseID);
-                if (CourseExercise.Count() != 0)
+                Exercise exercise = null;
+                if (solutionID != null)
                 {
+                     exercise = _exercise.Exercises.FirstOrDefault(c => c.CourseID == Course.CourseID && c.ID == solutionID);
+
+                }
+                var courseExercises = _exercise.Exercises.Where(c => c.CourseID == Course.CourseID);
+                if ( courseExercises.Count() > 0)
+                {
+                    CourseViewModel model = new CourseViewModel()
+                    {
+                        CourseExercise = exercise,
+                        CourseExercises = courseExercises
+                    };
                     ViewData["Title"] = Course.Title;
-                    return View(CourseExercise);
+                    return View(model);
                 }
             }
             return NotFound();
 
         }
-
+        //No AJAX
         [Breadcrumb("ViewData.Title", CacheTitle = true, FromAction = "Course.Course")]
         [Authorize]
-        public async Task<IActionResult> Exercise(string _exerciseID = null)
+        public async Task<IActionResult> Exercise(int? SolutionID,int? CourseID)
+        {
+ 
+            if (SolutionID != null && CourseID !=null)
+            {
+            
+                var user = await GetCurrentUserAsync();
+
+                Exercise exercise = _exercise.Exercises.FirstOrDefault(e => e.ID == SolutionID && e.CourseID == CourseID);
+                if (exercise != null && user != null)
+                {
+                    ExerciseViewModel model = new ExerciseViewModel()
+                    {
+                        Exercise = exercise,
+                        UserID = user.Id
+                    };
+                    ViewData["Title"] = model.Exercise.Title;
+                    return View(model);
+                }
+
+
+            }
+            return NotFound();
+        }
+        [Breadcrumb("ViewData.Title", CacheTitle = true, FromAction = "Course.Course")]
+        [Authorize]
+        public async Task<IActionResult> AjaxExercise(string _exerciseID = null)
         {
             int exerciseID;
             if (_exerciseID != null)
@@ -108,7 +146,7 @@ namespace CoursePol.Controllers
                         UserID = user.Id
                     };
                     ViewData["Title"] = model.Exercise.Title;
-                    return View(model);
+                    return PartialView("ShowExercises", model.Exercise);
                 }
 
 

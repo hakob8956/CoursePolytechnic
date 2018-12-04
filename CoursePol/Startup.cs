@@ -78,7 +78,18 @@ namespace CoursePol
 #pragma warning disable CS0618 // Type or member is obsolete
             app.UseIdentity();
 #pragma warning restore CS0618 // Type or member is obsolete
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                   name: null,
+                   template: "Solutions/course{CourseID:int}/{solutionID:int?}",
+                   defaults: new { controller = "Course", action = "Course" }
+
+                   );
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
 
 
         }

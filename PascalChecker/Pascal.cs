@@ -16,30 +16,7 @@ namespace PascalChecker
         private readonly static object lockForStream = new object();
         public static string GetSolutionContent(int numberSolution, string content)//numberner@ @st xndragrqi,content-@ useri-cod@(submit)
         {
-            //switch (numberSolution)
-            //{
-            //    case 1://For Test "Hello World"
-            //        content = $@"function Solution{numberSolution}: Int64;
-            //                  implementation
-            //                     function Solution{numberSolution}: Int64;
-
-            //              begin
-            //              {content} 
-            //              Solution1:=2;
-            //              end;";
-            //        break;
-            //    case 2://orinak gtnel max
-            //        content = $@"{content}";
-            //        break;
-            //    case 3:
-            //        content = @"";
-            //        break;
-            //    default:
-            //        content = @"";
-            //        break;
-            //}
-
-            string output =
+        string output =
 $@"unit Solutions;
 {{$mode tp}}
 {{$H+}}
@@ -79,8 +56,6 @@ end.";
             {
                 file.Delete();
             }
-
-
         }
         public static bool BuildOutput(int numberSolution, string userPath, string filename)
         {
@@ -112,8 +87,8 @@ end.";
             //I divided into two parts 1.Link-->Create ProjectEuler.exe or Not 2.Check ProjectEuler.exe Exist and create output.txt 
 
             File.WriteAllLines("coms.bat", LinkComands);
-            //#1 Build Project -->Create ProjectEuler.exe
 
+            //#1 Build Project -->Create ProjectEuler.exe
             Process LinkProcess = new Process();
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -137,6 +112,7 @@ end.";
             OutputProcess.Start();
             OutputProcess.WaitForExit();
             OutputProcess.Close();
+
             //#3 Read output File and delete temp file
             bool output = ReturnOutput(userPath + "\\output.txt");
             return output;

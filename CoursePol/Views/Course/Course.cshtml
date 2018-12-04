@@ -2,16 +2,16 @@
     Layout = "_CourseLayout";
 
 }
-@model IEnumerable<Exercise>
+@model CourseViewModel
 <div class="container">
     <div class="row">
         <div class="col-sm-2 mediaDiv" style="">
 
             <ul class="nav  mediaCollapse hor_menu">
-                @foreach (var item in Model)
+                @foreach (var item in Model.CourseExercises)
                 {
                     <li class="nav-item">
-                        <a class="nav-link myExercise" href="@item.ID" id=@item.ID title="@item.Title">@item.Title</a>
+                        <a class="nav-link myExercise" href="@item.ID" id=@item.ID title="@item.Title" onclick="changeurl(@item.CourseID,@item.ID)">@item.Title</a>
                     </li>
 
                 }
@@ -28,27 +28,34 @@
 
         </div>
         <div class="col-lg-10" id="content">
-            <h3 align="center">Lorem Ipsum</h3>
-            <p class="text-justify">
-                "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+            @if (Model.CourseExercise != null)
+            {
+                @Html.Partial("ShowExercises", Model.CourseExercise)
+            }
+            else
+            {
+                <h3 align="center">Lorem Ipsum</h3>
+                <p class="text-justify">
+                    "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
 
-                "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
+                    "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nisl lobortis, hendrerit ex non, tristique felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent eget augue placerat, sagittis arcu vitae, elementum augue. Pellentesque ac tristique velit. Phasellus eleifend quam erat, eget blandit tellus placerat ut. Etiam pharetra tincidunt metus, at porttitor urna pretium dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla pretium dolor in elit accumsan, ac cursus nulla ultricies. Pellentesque consectetur sollicitudin neque, a fermentum lacus pellentesque vitae. Integer sollicitudin vitae nunc id porta. Proin nulla neque, porttitor vel ante id, blandit sodales nulla. Suspendisse a diam sed nibh viverra lacinia egestas ac ligula. Duis risus est, dapibus eget posuere eget, volutpat in felis.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nisl lobortis, hendrerit ex non, tristique felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent eget augue placerat, sagittis arcu vitae, elementum augue. Pellentesque ac tristique velit. Phasellus eleifend quam erat, eget blandit tellus placerat ut. Etiam pharetra tincidunt metus, at porttitor urna pretium dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla pretium dolor in elit accumsan, ac cursus nulla ultricies. Pellentesque consectetur sollicitudin neque, a fermentum lacus pellentesque vitae. Integer sollicitudin vitae nunc id porta. Proin nulla neque, porttitor vel ante id, blandit sodales nulla. Suspendisse a diam sed nibh viverra lacinia egestas ac ligula. Duis risus est, dapibus eget posuere eget, volutpat in felis.
 
-                Nullam vitae elit massa. Phasellus a cursus dolor, eget luctus tellus. Ut scelerisque ipsum ut augue consectetur, at vehicula sapien elementum. Nunc sed pellentesque odio. Sed eu erat tortor. Fusce faucibus turpis a mi maximus, id viverra sapien semper. Phasellus venenatis varius augue a scelerisque. Fusce nec lacus vel tortor vestibulum porta. Duis fermentum tincidunt laoreet. Cras facilisis turpis ut enim efficitur, eu fringilla dui malesuada.
+                    Nullam vitae elit massa. Phasellus a cursus dolor, eget luctus tellus. Ut scelerisque ipsum ut augue consectetur, at vehicula sapien elementum. Nunc sed pellentesque odio. Sed eu erat tortor. Fusce faucibus turpis a mi maximus, id viverra sapien semper. Phasellus venenatis varius augue a scelerisque. Fusce nec lacus vel tortor vestibulum porta. Duis fermentum tincidunt laoreet. Cras facilisis turpis ut enim efficitur, eu fringilla dui malesuada.
 
-                Mauris et massa eu justo imperdiet malesuada eu vitae felis. Praesent volutpat suscipit cursus. Cras rutrum leo nec mi aliquam elementum. Fusce posuere faucibus elit, eu faucibus libero tincidunt at. Aliquam aliquam finibus sem. Duis fringilla orci ut convallis laoreet. In lacinia elit nisl, in ultrices arcu molestie vel. Fusce efficitur lorem vitae mattis scelerisque.
-                "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                    Mauris et massa eu justo imperdiet malesuada eu vitae felis. Praesent volutpat suscipit cursus. Cras rutrum leo nec mi aliquam elementum. Fusce posuere faucibus elit, eu faucibus libero tincidunt at. Aliquam aliquam finibus sem. Duis fringilla orci ut convallis laoreet. In lacinia elit nisl, in ultrices arcu molestie vel. Fusce efficitur lorem vitae mattis scelerisque.
+                    "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
 
-                "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
+                    "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nisl lobortis, hendrerit ex non, tristique felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent eget augue placerat, sagittis arcu vitae, elementum augue. Pellentesque ac tristique velit. Phasellus eleifend quam erat, eget blandit tellus placerat ut. Etiam pharetra tincidunt metus, at porttitor urna pretium dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla pretium dolor in elit accumsan, ac cursus nulla ultricies. Pellentesque consectetur sollicitudin neque, a fermentum lacus pellentesque vitae. Integer sollicitudin vitae nunc id porta. Proin nulla neque, porttitor vel ante id, blandit sodales nulla. Suspendisse a diam sed nibh viverra lacinia egestas ac ligula. Duis risus est, dapibus eget posuere eget, volutpat in felis.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nisl lobortis, hendrerit ex non, tristique felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent eget augue placerat, sagittis arcu vitae, elementum augue. Pellentesque ac tristique velit. Phasellus eleifend quam erat, eget blandit tellus placerat ut. Etiam pharetra tincidunt metus, at porttitor urna pretium dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla pretium dolor in elit accumsan, ac cursus nulla ultricies. Pellentesque consectetur sollicitudin neque, a fermentum lacus pellentesque vitae. Integer sollicitudin vitae nunc id porta. Proin nulla neque, porttitor vel ante id, blandit sodales nulla. Suspendisse a diam sed nibh viverra lacinia egestas ac ligula. Duis risus est, dapibus eget posuere eget, volutpat in felis.
 
-                Nullam vitae elit massa. Phasellus a cursus dolor, eget luctus tellus. Ut scelerisque ipsum ut augue consectetur, at vehicula sapien elementum. Nunc sed pellentesque odio. Sed eu erat tortor. Fusce faucibus turpis a mi maximus, id viverra sapien semper. Phasellus venenatis varius augue a scelerisque. Fusce nec lacus vel tortor vestibulum porta. Duis fermentum tincidunt laoreet. Cras facilisis turpis ut enim efficitur, eu fringilla dui malesuada.
+                    Nullam vitae elit massa. Phasellus a cursus dolor, eget luctus tellus. Ut scelerisque ipsum ut augue consectetur, at vehicula sapien elementum. Nunc sed pellentesque odio. Sed eu erat tortor. Fusce faucibus turpis a mi maximus, id viverra sapien semper. Phasellus venenatis varius augue a scelerisque. Fusce nec lacus vel tortor vestibulum porta. Duis fermentum tincidunt laoreet. Cras facilisis turpis ut enim efficitur, eu fringilla dui malesuada.
 
-                Mauris et massa eu justo imperdiet malesuada eu vitae felis. Praesent volutpat suscipit cursus. Cras rutrum leo nec mi aliquam elementum. Fusce posuere faucibus elit, eu faucibus libero tincidunt at. Aliquam aliquam finibus sem. Duis fringilla orci ut convallis laoreet. In lacinia elit nisl, in ultrices arcu molestie vel. Fusce efficitur lorem vitae mattis scelerisque.
-            </p>
+                    Mauris et massa eu justo imperdiet malesuada eu vitae felis. Praesent volutpat suscipit cursus. Cras rutrum leo nec mi aliquam elementum. Fusce posuere faucibus elit, eu faucibus libero tincidunt at. Aliquam aliquam finibus sem. Duis fringilla orci ut convallis laoreet. In lacinia elit nisl, in ultrices arcu molestie vel. Fusce efficitur lorem vitae mattis scelerisque.
+                </p>
+            }
         </div>
 
     </div>
@@ -134,5 +141,13 @@
         /**/
 
     </style>
-
+ 
 }
+<script type="text/javascript">
+    function changeurl(courseID, solutionID) {
+        console.log("courseID = " + courseID + " solutionID = " + solutionID);
+        var new_url = "http://localhost:6167/Solutions/course" + courseID + "/" + solutionID;
+        window.history.pushState("data", "Title", new_url);
+        //document.title = id;
+    }
+</script>

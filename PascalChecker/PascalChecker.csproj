@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PascalTemplate.cs" />
     <Compile Include="Pascal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
