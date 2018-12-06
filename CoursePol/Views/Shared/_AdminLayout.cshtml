@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" asp-href-include="~/lib/css/bootstrap.css">
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" asp-href-include="~/lib/admin/css/styles.min.css" />
+    <script asp-src-include="~/lib/admin/ckeditor/ckeditor.js"></script>
+    <script asp-src-include="~/lib/vendors/jquery/jquery.min.js"></script>
+
+
+    <style>
+        #logo {
+            color: #e1c9c9 !important;
+        }
+
+            #logo:hover {
+                color: #efdbdb !important;
+            }
+
+        .normalButton {
+            height: 30px !important;
+            width: 32px !important;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand" id="logo" href="#">
+                    <img src="https://cdn4.iconfinder.com/data/icons/standard-free-icons/100/Setting-512.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                    Admin Panel
+                </a>
+                <div class="form-inline my-2 my-lg-0">
+
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#ffffff">
+                        My Account
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">My Profile</a>
+                        <a class="dropdown-item" asp-action="Index" asp-controller="Admin">Admin Panel</a>
+                        <a class="dropdown-item" asp-action="Index" asp-controller="Home" style="color:#D92420">Exit</a>
+
+                    </div>
+                </div>
+
+            </nav>
+
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="sidebar content-box" style="display: block;">
+                    <ul class="nav">
+                        <!-- Main menu -->
+                        @*<li><a asp-action="NewPosts" asp-controller="Admin" id="newposts"><i class="fab fa-github-alt"></i> New Posts</a></li>*@
+                        <li><a asp-action="Index" asp-controller="Admin" id="posts"><i class="fas fa-database"></i>Surrender Data</a></li>
+                        <li><a asp-action="Index" asp-controller="User" id="user"><i class="fas fa-users"></i>Users</a></li>
+                        <li><a asp-action="Index" asp-controller="Roles" id="roles"><i class="fas fa-pencil-ruler"></i>Roles</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+
+
+    <script asp-src-include="~/lib/js/bootstrap.min.js"></script>
+    <script asp-src-include="~/lib/vendors/bootstrap-datepicker/bootstrap-select.js"></script>
+
+</body>
+</html>
+@*<script>
+    $(document).ready(function () {
+
+        $("#newposts").on("click", function (a) {
+            a.preventDefault();
+            $("#content").load("/Admin/NewPosts");
+        });
+        $("#posts").on("click", function (b) {
+            b.preventDefault();
+            $("#content").load("/Admin/GetAjaxView", { viewname: "Index" });
+        });
+
+        $("#users").on("click", function (c) {
+            c.preventDefault();
+            $("#content").load("/Users/Index");
+        });
+        $("#roles").on("click", function (d) {
+            d.preventDefault();
+            $("#content").load("/Roles/Index");
+        });
+    });
+</script>*@

@@ -22,6 +22,14 @@
     <None Include="bundleconfig.json" />
     <None Include="Views\Account\Login.cshtml" />
     <None Include="Views\Account\Register.cshtml" />
+    <None Include="Views\Roles\Create.cshtml" />
+    <None Include="Views\Roles\Edit.cshtml" />
+    <None Include="Views\Roles\Index.cshtml" />
+    <None Include="Views\Roles\UserList.cshtml" />
+    <None Include="Views\User\ChangePassword.cshtml" />
+    <None Include="Views\User\Create.cshtml" />
+    <None Include="Views\User\Edit.cshtml" />
+    <None Include="Views\User\Index.cshtml" />
     <None Include="wwwroot\lib\vendors\jquery\dist\jquery.js" />
     <None Include="wwwroot\lib\vendors\jquery\dist\jquery.min.js" />
     <None Include="wwwroot\lib\vendors\jquery\dist\jquery.min.map" />

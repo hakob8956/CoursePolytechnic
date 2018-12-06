@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CourseExercise>
+@{
+    Layout = "_AdminLayout";
+    ViewBag.Title = "Surrender Data";
+}
+
+<div class="col-md-10" id="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="content-box-large">
+                <div class="panel-heading">
+                    <div class="panel-title">Surrender Data</div>
+                    <div class="panel-options">
+                        <a href="#" style="font-size:large" title="Add User"><i class="fas fa-plus-circle"></i></a>
+                    </div>
+                    <br />
+                    <div class="input-group mb-1">
+                        <select class="custom-select" id="inputGroupSelect02" style="margin-right:5px">
+                            <option selected>Choose...</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+
+                        </select>
+                        <select class="custom-select" id="inputGroupSelect02">
+                            <option selected>Choose...</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th scope="col">UserID</th>
+                            <th scope="col">CourseID</th>
+                            <th scope="col">ExercisesID</th>
+                            <th scope="col">Text</th>
+                            <th scope="col">Completed</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>@item.UserID</td>
+                            <td>@item.CourseID</td>
+                            <td>@item.ExercisesID</td>
+                            <td>@item.Text</td>
+                            @{string output = item.Completed == 1 ? "Complete" : "UnComplete";}
+                            <td>@output</td>
+                        </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

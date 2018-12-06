@@ -10,5 +10,11 @@
     "inputFiles": [
       "wwwroot/lib/css/bootstrap.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/admin/css/styles.min.css",
+    "inputFiles": [
+      "wwwroot/lib/admin/css/styles.css"
+    ]
   }
 ]

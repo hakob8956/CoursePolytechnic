@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using PascalChecker;
 using SmartBreadcrumbs;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -60,8 +59,8 @@ namespace CoursePol.Controllers
         }
         [Breadcrumb("ViewData.Title", CacheTitle = true, FromAction = "Course.CourseDetails")]
         [Authorize]
-       
-        public IActionResult Course(int? courseID,int? solutionID)
+
+        public IActionResult Course(int? courseID, int? solutionID)
         {
 
             if (courseID == null)
@@ -74,11 +73,11 @@ namespace CoursePol.Controllers
                 Exercise exercise = null;
                 if (solutionID != null)
                 {
-                     exercise = _exercise.Exercises.FirstOrDefault(c => c.CourseID == Course.CourseID && c.ID == solutionID);
+                    exercise = _exercise.Exercises.FirstOrDefault(c => c.CourseID == Course.CourseID && c.ID == solutionID);
 
                 }
                 var courseExercises = _exercise.Exercises.Where(c => c.CourseID == Course.CourseID);
-                if ( courseExercises.Count() > 0)
+                if (courseExercises.Count() > 0)
                 {
                     CourseViewModel model = new CourseViewModel()
                     {
@@ -95,12 +94,12 @@ namespace CoursePol.Controllers
         //No AJAX
         [Breadcrumb("ViewData.Title", CacheTitle = true, FromAction = "Course.Course")]
         [Authorize]
-        public async Task<IActionResult> Exercise(int? SolutionID,int? CourseID)
+        public async Task<IActionResult> Exercise(int? SolutionID, int? CourseID)
         {
- 
-            if (SolutionID != null && CourseID !=null)
+
+            if (SolutionID != null && CourseID != null)
             {
-            
+
                 var user = await GetCurrentUserAsync();
 
                 Exercise exercise = _exercise.Exercises.FirstOrDefault(e => e.ID == SolutionID && e.CourseID == CourseID);
@@ -206,16 +205,18 @@ namespace CoursePol.Controllers
                 {
                     sw.WriteLine(model.Text);
                 }
+                
                 bool completed = Pascal.BuildOutput(CurrentExercise.NumberSolution, folder2.FullName, Path.GetFileNameWithoutExtension(fi1.Name));
                 string output = completed ? $"Output:True" : "Output:False";
                 var courseExercise = _courseExerciseComplete.CourseExercises.FirstOrDefault(l => l.ExercisesID == model.ExercisesID && user.Id == l.UserID && l.CourseID == model.CourseID);
+                
                 if (courseExercise == null)
                 {
                     CourseExercise courseExerciseNewModel = new CourseExercise()
                     {
                         CourseID = model.CourseID,
                         UserID = user.Id,
-                        Text = model.Text,
+                        Text = Compect.Base64Encode(model.Text),
                         ExercisesID = model.ExercisesID,
                         Completed = completed ? 1 : -1
                     };
@@ -224,7 +225,7 @@ namespace CoursePol.Controllers
                 else
                 {
                     courseExercise.Completed = completed ? 1 : -1;
-                    courseExercise.Text = model.Text;
+                    courseExercise.Text = Compect.Base64Encode(model.Text);
                     _courseExerciseComplete.SaveCourseExercise(courseExercise);
                 }
 

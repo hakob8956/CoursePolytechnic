@@ -1,0 +1,26 @@
+﻿@model CoursePol.ViewModels.CreateUserViewModel
+@{
+    ViewBag.Title = "Create User";
+    Layout = "_AdminLayout";
+}
+<div id="content">
+    <form asp-action="Create" asp-controller="User">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input type="hidden" name="Date" value="@DateTime.Now" />
+        <div class="form-group">
+            <label asp-for="Email" class="control-label">Email</label>
+            <input type="text" asp-for="Email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label">Пароль</label>
+            <input type="text" asp-for="Password" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Year" class="control-label">Год рождения</label>
+            <input type="number" asp-for="Year" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add" class="btn btn-default" />
+        </div>
+    </form>
+</div>
