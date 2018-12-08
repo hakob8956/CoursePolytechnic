@@ -1,4 +1,4 @@
-﻿namespace CoursePol.Models
+﻿namespace CoursePol.Models.ViewModels
 {
     public class BreadcrumbViewModel
     {

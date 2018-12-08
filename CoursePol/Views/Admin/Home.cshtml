@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+@model UserDetailViewModel
+@*//TODO FIX THIS FACKING SHEEETTTT*@
+<div class="col-md-10" id="content">
+    <h3 class="h3 text-center">Home</h3><br />
+    <form>
+        <div class="form-group">
+            <input type="search" class="form-control-sm"  placeholder="Search...">
+           
+        </div>
+        <div class="form-group">
+            <select class="custom-select-sm">
+                <option value="value">text</option>
+                <option value="value">text</option>
+
+            </select>
+        </div>
+    </form>
+    <div class="row">
+        @Html.Partial("ShowUsers", Model.Users)
+    </div>
+</div>

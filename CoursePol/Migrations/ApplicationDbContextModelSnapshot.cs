@@ -67,6 +67,8 @@ namespace CoursePol.Migrations
 
                     b.Property<int>("ExercisesID");
 
+                    b.Property<string>("Text");
+
                     b.Property<string>("UserID");
 
                     b.HasKey("ID");
@@ -81,7 +83,11 @@ namespace CoursePol.Migrations
 
                     b.Property<int>("CourseID");
 
+                    b.Property<int>("NumberSolution");
+
                     b.Property<int>("Points");
+
+                    b.Property<string>("Template");
 
                     b.Property<string>("Text");
 
@@ -99,7 +105,7 @@ namespace CoursePol.Migrations
 
                     b.Property<int>("CourseID");
 
-                    b.Property<int>("UserID");
+                    b.Property<string>("UserID");
 
                     b.HasKey("ID");
 
@@ -116,28 +122,36 @@ namespace CoursePol.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<string>("Date");
+                    b.Property<string>("DateBirthday");
+
+                    b.Property<string>("DateRegister");
+
+                    b.Property<string>("Department");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("Facul");
+                    b.Property<string>("Faculty");
 
                     b.Property<string>("Group");
+
+                    b.Property<string>("Institute");
 
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("MiddleName");
+
+                    b.Property<string>("Name");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
-
-                    b.Property<int>("NumberCourse");
 
                     b.Property<string>("PasswordHash");
 
@@ -147,12 +161,12 @@ namespace CoursePol.Migrations
 
                     b.Property<string>("SecurityStamp");
 
+                    b.Property<string>("Surname");
+
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
-
-                    b.Property<int>("Year");
 
                     b.HasKey("Id");
 

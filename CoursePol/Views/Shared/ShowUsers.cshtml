@@ -1,0 +1,75 @@
+﻿@model IEnumerable<User>
+@*@for (int i = 0; i < 10; i++)
+{
+
+    string id = $"collapse{i}";
+    string head = $"heading{i}";
+    string acording = $"acording{i}";
+
+
+    <div class="card bg-light mb-2" style="max-width: 18rem;margin-right:12px;border-radius:10px" id="acording">
+        <div class="card-header" id="@head" style="cursor:default;">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#@id" aria-expanded="true" aria-controls="@id" style="color:darkslategray">
+                Hakob Nersesyan
+            </button>
+        </div>
+        <div id="@id" class="collapse" aria-labelledby="@head" data-parent="#acording">
+            <div class="card-body">
+                <h5 class="card-title">User Information</h5>
+                <div class="card-text" style="margin-bottom:6px">
+                    <table class="table border-0">
+                        <tr><td><b>MiddleName</b></td><td>Lorem Ipsum1</td></tr>
+                        <tr><td><b>Email</b></td><td>Lorem Ipsum1</td></tr>
+                        <tr><td><b>Insitute</b></td><td>Lorem Ipsum1</td></tr>
+                        <tr><td><b>Department</b></td><td>Lorem Ipsum1</td></tr>
+                        <tr><td><b>Faculty</b></td><td>Lorem Ipsum1</td></tr>
+                        <tr><td><b>Group</b></td><td>Lorem Ipsum1</td></tr>
+                    </table>
+                </div>
+                <a class="card-link" href="#">More...</a>
+            </div>
+        </div>
+    </div>
+
+
+}*@
+@{ int i = 0;}
+@foreach (var item in Model)
+{
+    i++;
+    string id = $"collapse{i}";
+    string head = $"heading{i}";
+    string acording = $"acording{i}";
+    string fullName = $"{item.Name} {item.Surname}";
+
+    <div class="card bg-light mb-2" style="max-width: 18rem;margin-right:12px;border-radius:10px" id="acording">
+        <div class="card-header" id="@head" style="cursor:default;background-color:#ffffff;padding:0.2em">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#@id" aria-expanded="true" aria-controls="@id" style="color:darkslategray">
+               @fullName
+            </button>
+        </div>
+        <div id="@id" class="collapse" aria-labelledby="@head" data-parent="#acording">
+            <div class="card-body">
+                <h5 class="card-title">User Information</h5>
+                <div class="card-text" style="margin-bottom:6px">
+                    <table class="table border-0">
+                        <tr><td><b>MiddleName</b></td><td>@item.MiddleName</td></tr>
+                        <tr><td><b>Email</b></td><td>@item.Email</td></tr>
+                        <tr><td><b>Insitute</b></td><td>@item.Institute</td></tr>
+                        <tr><td><b>Department</b></td><td>@item.Department</td></tr>
+                        <tr><td><b>Faculty</b></td><td>@item.Faculty</td></tr>
+                        <tr><td><b>Group</b></td><td>@item.Group</td></tr>
+                    </table>
+                </div>
+                <a class="card-link" href="#">More...</a>
+            </div>
+        </div>
+    </div>
+
+
+}
+<style>
+    #acording {
+        height: 0%;
+    }
+</style>

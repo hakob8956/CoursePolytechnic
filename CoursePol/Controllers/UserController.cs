@@ -1,6 +1,6 @@
 ﻿using CoursePol.Models;
 using CoursePol.Models.ViewModels;
-using CoursePol.ViewModels;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -31,7 +31,21 @@ namespace CoursePol.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User { Email = model.Email, UserName = model.Email, Year = model.Year, Date = model.Date };
+                User user = new User
+                {
+                    Name = model.Name,
+                    Surname = model.Surname,
+                    MiddleName = model.MiddleName,
+                    DateBirthday = model.DateBirthday,
+                    DateRegister = model.DateRegister,
+                    Institute = model.Institute,
+                    Department = model.Department,
+                    Faculty = model.Faculty,
+                    Group = model.Group,
+                    Email = model.Email,
+                    UserName = model.Email
+
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
@@ -59,7 +73,20 @@ namespace CoursePol.Controllers
             {
                 return NotFound();
             }
-            EditUserViewModel model = new EditUserViewModel { Id = user.Id, Email = user.Email, Year = user.Year, Date = user.Date };
+            EditUserViewModel model = new EditUserViewModel
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Surname = user.Surname,
+                MiddleName = user.MiddleName,
+                DateBirthday = user.DateBirthday,
+                DateRegister = user.DateRegister,
+                Institute = user.Institute,
+                Department = user.Department,
+                Faculty = user.Faculty,
+                Group = user.Group,
+                Email = user.Email
+            };
 
             return View(model);
         }
@@ -73,8 +100,14 @@ namespace CoursePol.Controllers
                 if (user != null)
                 {
                     user.Email = model.Email;
-                    user.UserName = model.Email;
-                    user.Year = model.Year;
+                    user.Surname = model.Surname;
+                    user.MiddleName = model.MiddleName;
+                    user.DateBirthday = model.DateBirthday;
+                    user.Institute = model.Institute;
+                    user.Department = model.Department;
+                    user.Faculty = model.Faculty;
+                    user.Group = model.Group;
+
 
                     var result = await _userManager.UpdateAsync(user);
                     if (result.Succeeded)

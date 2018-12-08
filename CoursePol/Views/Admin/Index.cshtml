@@ -45,12 +45,14 @@
                         <tr>
                             <td>@item.UserID</td>
                             <td>@item.CourseID</td>
-                            <td>@item.ExercisesID</td>
-                            <td>@item.Text</td>
-                            @{string output = item.Completed == 1 ? "Complete" : "UnComplete";}
+                            <td>@item.ExercisesID</td>               
+                            <td>@PascalChecker.Compect.Base64Decode(item.Text)</td>
+                            @{string output = item.Completed == 1 ? "Complete" : "Incomplete";}
                             <td>@output</td>
                         </tr>
                         }
+
+                      
                     </table>
                 </div>
             </div>

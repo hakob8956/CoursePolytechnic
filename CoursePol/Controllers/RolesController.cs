@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MySite.Controllers
 {
-    [Authorize(Roles = "admin")]
+    //[Authorize(Roles = "admin")]
     public class RolesController : Controller
     {
         RoleManager<IdentityRole> _roleManager;

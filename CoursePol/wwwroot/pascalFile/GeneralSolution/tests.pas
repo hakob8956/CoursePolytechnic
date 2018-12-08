@@ -9,7 +9,7 @@ uses
  TestFramework;
 
 type
- TTestCaseSolution1= class(TTestCase)
+ TTestCaseSolution2= class(TTestCase)
  published
    procedure TestResult;
  end;
@@ -24,11 +24,12 @@ uses
 
 procedure RegisterTests;
 begin
-  TestFramework.RegisterTest(TTestCaseSolution1.Suite);
+  TestFramework.RegisterTest(TTestCaseSolution2.Suite);
 end;
-procedure TTestCaseSolution1.TestResult;
+procedure TTestCaseSolution2.TestResult;
 begin
 
-  Check(Solutions.Solution1 = 2, 'Incorrect');
+  Check(Solutions.Solution2(5,4,3) = 5, 'Incorrect');
+  Check(Solutions.Solution2(6,4,3) = 6, 'Incorrect');
 end;
 end.

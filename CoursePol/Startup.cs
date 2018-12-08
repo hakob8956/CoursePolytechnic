@@ -36,6 +36,7 @@ namespace CoursePol
                 opts.Password.RequireLowercase = false; // требуются ли символы в нижнем регистре
                 opts.Password.RequireUppercase = false; // требуются ли символы в верхнем регистре
                 opts.Password.RequireDigit = false; // требуются ли цифры
+               
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders(); ;
@@ -77,6 +78,13 @@ namespace CoursePol
 #pragma warning restore CS0618 // Type or member is obsolete
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                  name: null,
+                  template: "Admin/{action}",
+                   defaults: new { controller = "Admin", action = "Home" }
+
+
+                  );
                 routes.MapRoute(
                    name: null,
                    template: "Solutions/course{CourseID:int}/{solutionID:int?}",

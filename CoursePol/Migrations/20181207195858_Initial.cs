@@ -30,23 +30,27 @@ namespace CoursePol.Migrations
                     Id = table.Column<string>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
-                    Date = table.Column<string>(nullable: true),
+                    DateBirthday = table.Column<string>(nullable: true),
+                    DateRegister = table.Column<string>(nullable: true),
+                    Department = table.Column<string>(nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
-                    Facul = table.Column<string>(nullable: true),
+                    Faculty = table.Column<string>(nullable: true),
                     Group = table.Column<string>(nullable: true),
+                    Institute = table.Column<string>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
+                    MiddleName = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
-                    NumberCourse = table.Column<int>(nullable: false),
                     PasswordHash = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
                     SecurityStamp = table.Column<string>(nullable: true),
+                    Surname = table.Column<string>(nullable: true),
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    UserName = table.Column<string>(maxLength: 256, nullable: true),
-                    Year = table.Column<int>(nullable: false)
+                    UserName = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -62,6 +66,7 @@ namespace CoursePol.Migrations
                     Completed = table.Column<int>(nullable: false),
                     CourseID = table.Column<int>(nullable: false),
                     ExercisesID = table.Column<int>(nullable: false),
+                    Text = table.Column<string>(nullable: true),
                     UserID = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -98,7 +103,9 @@ namespace CoursePol.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CourseID = table.Column<int>(nullable: false),
+                    NumberSolution = table.Column<int>(nullable: false),
                     Points = table.Column<int>(nullable: false),
+                    Template = table.Column<string>(nullable: true),
                     Text = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true)
                 },
@@ -114,7 +121,7 @@ namespace CoursePol.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CourseID = table.Column<int>(nullable: false),
-                    UserID = table.Column<int>(nullable: false)
+                    UserID = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

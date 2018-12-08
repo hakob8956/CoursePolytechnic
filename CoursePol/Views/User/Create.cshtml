@@ -1,4 +1,4 @@
-﻿@model CoursePol.ViewModels.CreateUserViewModel
+﻿@model CoursePol.Models.ViewModels.CreateUserViewModel
 @{
     ViewBag.Title = "Create User";
     Layout = "_AdminLayout";
@@ -6,18 +6,50 @@
 <div id="content">
     <form asp-action="Create" asp-controller="User">
         <div asp-validation-summary="All" class="text-danger"></div>
-        <input type="hidden" name="Date" value="@DateTime.Now" />
+        <input type="hidden" name="DateRegister" value="@DateTime.Now" />
+        <div class="form-group">
+            <label asp-for="Name" class="control-label">Name</label>
+            <input type="text" asp-for="Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Surname" class="control-label">Surname</label>
+            <input type="text" asp-for="Surname" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="MiddleName" class="control-label">Middle Name</label>
+            <input type="text" asp-for="MiddleName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="DateBirthday" class="control-label">Date Birthday</label>
+            <input type="date" asp-for="DateBirthday" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Institute" class="control-label">Institute</label>
+            <input type="text" asp-for="Institute" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Department" class="control-label">Department</label>
+            <input type="text" asp-for="Department" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Faculty" class="control-label">Faculty</label>
+            <input type="text" asp-for="Faculty" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Group" class="control-label">Group</label>
+            <input type="text" asp-for="Group" class="form-control" />
+        </div>
         <div class="form-group">
             <label asp-for="Email" class="control-label">Email</label>
             <input type="text" asp-for="Email" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="Password" class="control-label">Пароль</label>
-            <input type="text" asp-for="Password" class="form-control" />
+            <label asp-for="Password" class="control-label">Password</label>
+            <input type="password" asp-for="Password" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="Year" class="control-label">Год рождения</label>
-            <input type="number" asp-for="Year" class="form-control" />
+            <label asp-for="PasswordConfirm" class="control-label">Password Confirm</label>
+            <input type="password" asp-for="PasswordConfirm" class="form-control" />
         </div>
         <div class="form-group">
             <input type="submit" value="Add" class="btn btn-default" />

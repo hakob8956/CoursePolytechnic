@@ -34,10 +34,10 @@ end.";
             switch (numberSolution)
             {
                 case 1:
-                    output = GetFileContent(GeneralTests + $"test{numberSolution}.pas");
+                    output = GetFileContent(GeneralTests + $"test2.pas");
                     break;
                 case 2:
-                    output = GetFileContent(GeneralTests + $"test{numberSolution}.pas");
+                    output = GetFileContent(GeneralTests + $"test2.pas");
                     break;
                 default:
                     break;
