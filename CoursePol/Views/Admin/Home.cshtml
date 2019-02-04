@@ -2,23 +2,45 @@
     Layout = "_AdminLayout";
 }
 @model UserDetailViewModel
-@*//TODO FIX THIS FACKING SHEEETTTT*@
 <div class="col-md-10" id="content">
-    <h3 class="h3 text-center">Home</h3><br />
-    <form>
-        <div class="form-group">
-            <input type="search" class="form-control-sm"  placeholder="Search...">
-           
-        </div>
-        <div class="form-group">
-            <select class="custom-select-sm">
-                <option value="value">text</option>
-                <option value="value">text</option>
 
-            </select>
-        </div>
-    </form>
-    <div class="row">
-        @Html.Partial("ShowUsers", Model.Users)
+    <div class="d-flex flex-row-reverse  bd-highlight ">
+        <form action="Home" method="get" id="myFormSearch" style="display:inherit">
+            <div class="p-2  bd-highlight form-group">
+                <input class="form-control-sm" id="search" type="search" placeholder="search" />
+                <input type="hidden" value="@Model.CategoryID" id="categoryID" />
+                <input type="hidden" value="@Model.CategoryName" id="categoryName" />
+            </div>
+        </form>
+    </div>
+
+    <div class="row" id="subContent">
+        @Html.Partial("ShowUsers", Model)
     </div>
 </div>
+@section Scripts {
+    <script>
+        ///WORKING ONE>>>
+        //$(".sbmCategory").click(function (e) {
+        //    console.log("Work ?");
+        //    var categoryID = $(this).attr("id");
+        //    var categoryName = $(this).text().trim();
+        //    console.log(categoryID + "  " + categoryName);
+        //    e.preventDefault();
+        //    $("#subContent").load("/Admin/Home", { categoryID: categoryID, categoryName: categoryName, AjaxRequest: 1 });
+
+        //});
+        $("#myFormSearch").submit(function (e) {
+            var search = $("#search").val();
+            var categoryID = $("#categoryID").val();
+            var categoryName = $("#categoryName").val();
+            e.preventDefault();
+            var id = $(this).attr("id");
+
+            $("#subContent").load("/Admin/AjaxSearch", { search: search, categoryID: categoryID, categoryName: categoryName });
+
+            return false;
+        });
+
+    </script>
+}

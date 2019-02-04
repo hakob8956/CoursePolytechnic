@@ -43,7 +43,7 @@
                         @foreach (var item in Model)
                         {
                         <tr>
-                            <td>@item.UserID</td>
+                            <td>@item.ID</td>//Todo see
                             <td>@item.CourseID</td>
                             <td>@item.ExercisesID</td>               
                             <td>@PascalChecker.Compect.Base64Decode(item.Text)</td>

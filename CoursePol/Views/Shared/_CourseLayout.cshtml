@@ -90,7 +90,7 @@
             $('a.myExercise').on('click', function (e) {
                 e.preventDefault();             
                 var id = $(this).attr("id");
-                //changeurl(id);
+               
                 $("#content").load("/Course/AjaxExercise", { _exerciseID: id });
 
             });

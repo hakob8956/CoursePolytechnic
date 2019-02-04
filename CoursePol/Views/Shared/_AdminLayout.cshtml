@@ -61,6 +61,8 @@
                     <ul class="nav">
                         <!-- Main menu -->
                         <li><a asp-action="Home" asp-controller="Admin" id="home"><i class="fas fa-home"></i>Home</a></li>
+                        <li><a asp-action="EditCourse" asp-controller="Admin" id="posts"><i class="fas fa-dumbbell"></i>Courses</a></li>
+
                         <li><a asp-action="Index" asp-controller="Admin" id="posts"><i class="fas fa-database"></i>Surrender Data</a></li>
                         <li><a asp-action="Index" asp-controller="User" id="user"><i class="fas fa-users"></i>Users</a></li>
                         <li><a asp-action="Index" asp-controller="Roles" id="roles"><i class="fas fa-pencil-ruler"></i>Roles</a></li>
@@ -72,7 +74,7 @@
         </div>
     </div>
 
-
+    @RenderSection("Scripts",false)
     <script asp-src-include="~/lib/js/bootstrap.min.js"></script>
     <script asp-src-include="~/lib/vendors/bootstrap-datepicker/bootstrap-select.js"></script>
 

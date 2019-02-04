@@ -1,75 +1,151 @@
-﻿@model IEnumerable<User>
+﻿@model UserDetailViewModel
+<!-- #region Test -->
 @*@for (int i = 0; i < 10; i++)
-{
+    {
 
-    string id = $"collapse{i}";
-    string head = $"heading{i}";
-    string acording = $"acording{i}";
+        string id = $"collapse{i}";
+        string head = $"heading{i}";
+        string acording = $"acording{i}";
 
 
-    <div class="card bg-light mb-2" style="max-width: 18rem;margin-right:12px;border-radius:10px" id="acording">
-        <div class="card-header" id="@head" style="cursor:default;">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#@id" aria-expanded="true" aria-controls="@id" style="color:darkslategray">
-                Hakob Nersesyan
-            </button>
-        </div>
-        <div id="@id" class="collapse" aria-labelledby="@head" data-parent="#acording">
-            <div class="card-body">
-                <h5 class="card-title">User Information</h5>
-                <div class="card-text" style="margin-bottom:6px">
-                    <table class="table border-0">
-                        <tr><td><b>MiddleName</b></td><td>Lorem Ipsum1</td></tr>
-                        <tr><td><b>Email</b></td><td>Lorem Ipsum1</td></tr>
-                        <tr><td><b>Insitute</b></td><td>Lorem Ipsum1</td></tr>
-                        <tr><td><b>Department</b></td><td>Lorem Ipsum1</td></tr>
-                        <tr><td><b>Faculty</b></td><td>Lorem Ipsum1</td></tr>
-                        <tr><td><b>Group</b></td><td>Lorem Ipsum1</td></tr>
-                    </table>
+        <div class="card bg-light mb-2" style="max-width: 18rem;margin-right:12px;border-radius:10px" id="acording">
+            <div class="card-header" id="@head" style="cursor:default;">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#@id" aria-expanded="true" aria-controls="@id" style="color:darkslategray">
+                    Hakob Nersesyan
+                </button>
+            </div>
+            <div id="@id" class="collapse" aria-labelledby="@head" data-parent="#acording">
+                <div class="card-body">
+                    <h5 class="card-title">User Information</h5>
+                    <div class="card-text" style="margin-bottom:6px">
+                        <table class="table border-0">
+                            <tr><td><b>MiddleName</b></td><td>Lorem Ipsum1</td></tr>
+                            <tr><td><b>Email</b></td><td>Lorem Ipsum1</td></tr>
+                            <tr><td><b>Insitute</b></td><td>Lorem Ipsum1</td></tr>
+                            <tr><td><b>Department</b></td><td>Lorem Ipsum1</td></tr>
+                            <tr><td><b>Faculty</b></td><td>Lorem Ipsum1</td></tr>
+                            <tr><td><b>Group</b></td><td>Lorem Ipsum1</td></tr>
+                        </table>
+                    </div>
+                    <a class="card-link" href="#">More...</a>
                 </div>
-                <a class="card-link" href="#">More...</a>
             </div>
         </div>
-    </div>
 
 
-}*@
-@{ int i = 0;}
-@foreach (var item in Model)
-{
-    i++;
-    string id = $"collapse{i}";
-    string head = $"heading{i}";
-    string acording = $"acording{i}";
-    string fullName = $"{item.Name} {item.Surname}";
+    }*@
+@*@{ int i = 0;}
+    @foreach (var item in Model)
+    {
+        i++;
+        string id = $"collapse{i}";
+        string head = $"heading{i}";
+        string acording = $"acording{i}";
+        string fullName = $"{item.Name} {item.Surname}";
 
-    <div class="card bg-light mb-2" style="max-width: 18rem;margin-right:12px;border-radius:10px" id="acording">
-        <div class="card-header" id="@head" style="cursor:default;background-color:#ffffff;padding:0.2em">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#@id" aria-expanded="true" aria-controls="@id" style="color:darkslategray">
-               @fullName
-            </button>
-        </div>
-        <div id="@id" class="collapse" aria-labelledby="@head" data-parent="#acording">
-            <div class="card-body">
-                <h5 class="card-title">User Information</h5>
-                <div class="card-text" style="margin-bottom:6px">
-                    <table class="table border-0">
-                        <tr><td><b>MiddleName</b></td><td>@item.MiddleName</td></tr>
-                        <tr><td><b>Email</b></td><td>@item.Email</td></tr>
-                        <tr><td><b>Insitute</b></td><td>@item.Institute</td></tr>
-                        <tr><td><b>Department</b></td><td>@item.Department</td></tr>
-                        <tr><td><b>Faculty</b></td><td>@item.Faculty</td></tr>
-                        <tr><td><b>Group</b></td><td>@item.Group</td></tr>
-                    </table>
+        <div class="card bg-light mb-2" style="max-width: 18rem;margin-right:12px;border-radius:10px" id="acording">
+            <div class="card-header" id="@head" style="cursor:default;background-color:#ffffff;padding:0.2em">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#@id" aria-expanded="true" aria-controls="@id" style="color:darkslategray">
+                   @fullName
+                </button>
+            </div>
+            <div id="@id" class="collapse" aria-labelledby="@head" data-parent="#acording">
+                <div class="card-body">
+                    <h5 class="card-title">User Information</h5>
+                    <div class="card-text" style="margin-bottom:6px">
+                        <table class="table border-0">
+                            <tr><td><b>MiddleName</b></td><td>@item.MiddleName</td></tr>
+                            <tr><td><b>Email</b></td><td>@item.Email</td></tr>
+                            <tr><td><b>Insitute</b></td><td>@item.Institute</td></tr>
+                            <tr><td><b>Department</b></td><td>@item.Department</td></tr>
+                            <tr><td><b>Faculty</b></td><td>@item.Faculty</td></tr>
+                            <tr><td><b>Group</b></td><td>@item.Group</td></tr>
+                        </table>
+                    </div>
+                    <a class="card-link" href="#">More...</a>
                 </div>
-                <a class="card-link" href="#">More...</a>
             </div>
         </div>
-    </div>
 
 
-}
-<style>
-    #acording {
-        height: 0%;
     }
-</style>
+    <style>
+        #acording {
+            height: 0%;
+        }
+    </style>*@
+<!-- #endregion -->
+
+@if (Model.Users == null)
+{
+
+
+    @foreach (var item in Model.CurrentFolders)
+    {
+        <div class="card bg-light mb-sm-2" style="max-width: 18rem;margin-right:12px;border-radius:10px;background-color:#f1ecec">
+            <div class="card-header" style="cursor:default;">
+                <form method="get" id="formCategory">
+                    @{ int categoryID = Model.CategoryID + 1; }
+                    <a class="sbmCategory" asp-action="Home" asp-controller="Admin" asp-route-categoryID="@categoryID" asp-route-categoryName="@item" style="color:darkslategray" id="@categoryID">@item</a>
+                </form>
+            </div>
+        </div>
+
+    }
+}
+else if (Model.Users.Count() > 0)//check it's ajax request or not ---> if search empty count==0
+{
+    int i = 0;
+    @foreach (var item in Model.Users)
+    {
+        i++;
+        string id = $"collapse{i}";
+        string head = $"heading{i}";
+        string acording = $"acording{i}";
+        string fullName = $"{item.Name} {item.Surname}";
+
+        <div class="card bg-light mb-2" style="max-width: 18rem;margin-right:12px;border-radius:10px" id="acording">
+            <div class="card-header" id="@head" style="cursor:default;background-color:#ffffff;padding:0.2em">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#@id" aria-expanded="true" aria-controls="@id" style="color:darkslategray">
+                    @fullName
+                </button>
+            </div>
+            <div id="@id" class="collapse" aria-labelledby="@head" data-parent="#acording">
+                <div class="card-body">
+                    <h5 class="card-title">User Information</h5>
+                    <div class="card-text" style="margin-bottom:6px">
+                        <table class="table border-0">
+                            <tr><td><b>MiddleName</b></td><td>@item.MiddleName</td></tr>
+                            <tr><td><b>Email</b></td><td>@item.Email</td></tr>
+                            <tr><td><b>Insitute</b></td><td>@item.Institute</td></tr>
+                            <tr><td><b>Department</b></td><td>@item.Department</td></tr>
+                            <tr><td><b>Faculty</b></td><td>@item.Faculty</td></tr>
+                            <tr><td><b>Group</b></td><td>@item.Group</td></tr>
+                        </table>
+                    </div>
+                    <a class="card-link" href="#">More...</a>
+                </div>
+            </div>
+        </div>
+
+
+    }
+    <style>
+        #acording {
+            height: 0%;
+        }
+    </style>
+}
+else
+{
+    <div class="alert alert-danger" role="alert">Not Found!</div>
+}
+@*<script>
+    $(".sbmCategory").click(function (e) {
+        var categoryID = $(this).attr("id");
+        var categoryName = $(this).text().trim();
+        e.preventDefault();
+        $("#subContent").load("/Admin/Home", { categoryID: categoryID, categoryName: categoryName, AjaxRequest: 1 });
+
+    });
+</script>*@

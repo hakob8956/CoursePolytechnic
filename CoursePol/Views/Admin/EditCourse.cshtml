@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CourseExercise>
+@{
+    Layout = "_AdminLayout";
+    ViewBag.Title = "Courses Data";
+}
+
+<div class="col-md-10" id="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="content-box-large">
+                <div class="panel-heading">
+                    <div class="panel-title">Surrender Data</div>
+                    <div class="panel-options">
+                        <a href="#" style="font-size:large" title="Add User"><i class="fas fa-plus-circle"></i></a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th scope="col">UserID</th>
+                            <th scope="col">CourseID</th>
+                            <th scope="col">ExercisesID</th>
+                            <th scope="col">Text</th>
+                            <th scope="col">Completed</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.CourseID</td>
+                                <td>@item.ExercisesID</td>
+                                <td>@PascalChecker.Compect.Base64Decode(item.Text)</td>
+                                @{string output = item.Completed == 1 ? "Complete" : "Incomplete";}
+                                <td>@output</td>
+                            </tr>
+                        }
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
